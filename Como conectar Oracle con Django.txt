@@ -1,0 +1,118 @@
+en este bloc de notas les enseñare como conectar django con oracle via Cx_oracle EN WINDOWS
+disclaimer: puedes usar cualquier consola (ya sea CMD o la consola del Visual Studio Code)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+requisitos:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+tener sqldeveloper (cualquier version)
+Tener python (cualquier version) con la edicion de 64 bits, si no se puede no se como se hace en el caso de los 32 bits. ya me aburri de esa version
+todos los demas sistemas que uses en el IDE, tienen que ser estrictamente de 64 bits, sino vas a tener errores tontos que te quitaran tiempo (como a mi que van a ser las 4 de la mañana y empeze a las 8 de la noche=
+revisa las variables de entorno del sistema para verificar de que python está en la variable path (eso se ve en los detalles de la variable con la ruta de python ya sea de 32 o 64 bits)
+
+
+
+
+======================================================================================================================
+Paso 1 instalar cx_oracle con pip
+======================================================================================================================
+este primer paso es sencillo, solamente debes escribir en la linea de comandos 
+
+	pip install cx_oracle 
+
+y al rato se instalaran los drivers de compatibilidad con oracle  y python
+
+======================================================================================================================
+paso 2 instalacion de la Base de datos local con oracle_xe y la informacion que requieres del sistema.
+======================================================================================================================
+primero busca en internet la version de oracle express edition de 64 bits lo instalas y le creas una contraseña a sys o sysdba
+
+luego en el SQL developer debes acceder con el usuario sys y la contraseña que creaste (si lo hiciste bien te mandara al IDE de la base de datos)
+
+ahi creas un usuario nuevo con las siguientes lineas de comando de oracle (que ahora no recuerdo el nombre estoy hecho pico ahora entiendeme)
+
+
+	CREATE USER usuario IDENTIFIED BY "contraseña"
+	DEFAULT TABLESPACE "USERS"
+	TEMPORARY TABLESPACE "TEMP";
+	ALTER USER usuario QUOTA UNLIMITED ON USERS;
+	GRANT CREATE SESSION TO usuario 
+	GRANT "RESOURCE" TO usuario 
+	ALTER USER usuario DEFAULT ROLE "RESOURCE";
+
+luego con ese mismo usuario que creaste solo debes conseguir el resto de la informacion que falta (la direccion del HOST, el Puerto y el tipo de servicio 
+
+
+para encontrar el puerto y el host debes hacer lo siguiente en CMD:
+
+	lsnrctl status
+
+esta linea de codigo te va a mostrar toda la informacion que necesitas saber sobre el host de la base de datos y del puerto de la misma, se ve de la siguiente manera en la consola:
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))		<<<<<<esta es la informacion que buscas>>>>>>>
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for 64-bit Windows: Version 18.0.0.0.0 - Production
+Start Date                20-APR-2023 17:08:44
+Uptime                    0 days 0 hr. 1 min. 5 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Parameter File   C:\oraclexe\app\oracle\product\18.0.0\server\network\admin\listener.ora
+Listener Log File         C:\oraclexe\app\oracle\diag\tnslsnr\mycomputer\listener\alert\log.xml
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=mycomputer)(PORT=1521)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=\\.\pipe\EXTPROC1521ipc)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcps)(HOST=mycomputer)(PORT=5500))(Security=(my_wallet_directory=C:\ORACLEXE\APP\ORACLE\PRODUCT\18.0.0\SERVER\NETWORK\ADMIN\wallet))(Presentation=HTTP)(Session=RAW))
+Services Summary...
+Service "XE" has 1 instance(s).
+  Instance "XE", status READY, has 1 handler(s) for this service...
+The command completed successfully
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+luego en el SQL developer debes saber que version tienes, en el caso de oracle express edition es XE, pero si no tienes claro como saberlo debes ejecutar la siguiente linea de codigo en el SQLdeveloper:
+
+	SELECT value FROM v$parameter WHERE name = 'service_names';
+
+eso te retornara el nombre del servicio de la base de datos en la consola del developer
+
+
+======================================================================================================================
+Paso 3 uso de la base de datos en django
+======================================================================================================================
+ya teniendo esos datos tienes que llenar en el archivo settings.py la informacion que pide el conector de la base de datos:
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'xe',
+        'USER': 'tu_usuario',
+        'PASSWORD': 'tu_contraseña',
+        'HOST': 'localhost',
+        'PORT': '1521',
+    }
+}
+ahora en el proyecto de Django utilizas el comando en la consola:
+
+	python manage.py makemigrations
+
+			o 
+
+	py manage.py makemigrations
+
+
+y por ultimo pones el siguiente comando:
+
+	py manage.py migrate
+
+			o
+	
+	python manage.py migrate
+
+y estaria listo, luego ahi ves que haces con la parte de los procedimientos almacenados en la base de datos que te enseñe a crear
