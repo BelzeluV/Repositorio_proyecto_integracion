@@ -73,7 +73,7 @@ DATABASES = {
         'PORT': '1521',
     }
 }
-
+AUTH_USER_MODEL = 'Appi.Usuario'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

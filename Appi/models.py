@@ -1,9 +1,84 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
 
 
 # Create your models here.
+opcionesSexo = [
+    [0,"Hombre"],
+    [1,"Mujer"],
+    [2,"No especificado"]
+]
+opcionescomuna = [
+    [0,"Peñaflor"],
+    [1,"Cerrillos"],
+    [2,"Cerro Navia"],
+    [3,"Conchalí"],
+    [4,"El Bosque"],
+    [5,"Estación Central"],
+    [6,"Huechuraba"],
+    [7,"Independencia"],
+    [8,"La Cisterna"],
+    [9,"La Florida"],
+    [10,"La Granja"],
+    [11,"La Pintana"],
+    [12,"La Reina"],
+    [13,"Las Condes"],
+    [14,"Lo Barnechea"],
+    [15,"Lo Espejo"],
+    [16,"Lo Prado"],
+    [17,"Macul"],
+    [18,"Maipú"],
+    [19,"Ñuñoa"],
+    [20,"Pedro Aguirre Cerda"],
+    [21,"Peñalolén"],
+    [22,"Providencia"],
+    [23,"Pudahuel"],
+    [24,"Quilicura"],
+    [25,"Quinta Normal"],
+    [26,"Recoleta"],
+    [27,"Renca"],
+    [28,"San Joaquín"],
+    [29,"San Miguel"],
+    [30,"San Ramón"],
+    [31,"Vitacura"],
+    [32,"Puente Alto"],
+    [33,"Pirque"],
+    [34,"San José de Maipo"],
+    [35,"Colina"],
+    [36,"Lampa"],
+    [37,"Tiltil"],
+    [38,"San Bernardo"],
+    [39,"Buin"],
+    [40,"Calera de Tango"],
+    [41,"Paine"],
+    [42,"Melipilla"],
+    [43,"Alhué"],
+    [44,"Curacaví"],
+    [45,"María Pinto"],
+    [46,"San Pedro"],
+    [47,"Talagante"],
+    [48,"El Monte"],
+    [49,"Isla de Maipo"],
+    [50,"Padre Hurtado"]
+]
 
+class Usuario(AbstractUser):
+    RUT                 = models.CharField(default = '', max_length = 13,  unique = True, error_messages = {"unique": "El rut ya está registrado."},blank=True)
+    nombre_real         = models.CharField(default = '', max_length = 50)
+    nacimiento          = models.DateField(null = True)
+    genero              = models.IntegerField(default = 2, choices = opcionesSexo)
+    telefono            = models.CharField(default = '', max_length = 15)
+    Direccion           = models.CharField(default = '', max_length = 300)
+    comuna              = models.IntegerField(null = True, blank = True, choices = opcionescomuna)  
+    foto_de_Usuario     = models.ImageField(upload_to = "usuarios",null = True)
 
+    class Meta:
+        ordering = ['nombre_real']
+
+    def __str__(self):
+        return self.username
+    
 class Proveedor(models.Model):
     id_proveedor        = models.AutoField(primary_key = True)
     nombreproveedor     = models.CharField(max_length = 40)
