@@ -1,3 +1,4 @@
 pillow 
 djangorestframework
 django
+cx_oracle
