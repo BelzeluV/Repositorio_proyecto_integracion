@@ -1,4 +1,3 @@
-
 from ..models import *
 from Appi.api.seerializers import *
 from rest_framework import viewsets
