@@ -1,9 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
-
-# Create your models here.
+opcionEstado = [
+    [0,"Reservado"],
+    [1,"En espera de revisión"],
+    [2,"En revision"],
+    [3,"en espera de repuestos"],
+    [4,"En espera de Atencion del técnico"],
+    [5,"En Atención de técnico"],
+    [6,"Completado"],
+    [7,"Cancelado"]
+]
 opcionesSexo = [
     [0,"Hombre"],
     [1,"Mujer"],
@@ -113,8 +120,26 @@ class Producto(models.Model):
     def __str__(self): 
         return self.nombre_producto
 
-class Orden(models.Model): 
+##modelo de la Facturacion de las ventas
+class Orden(models.Model):
     id_orden            = models.AutoField(primary_key = True)
+    descripcion         = models.CharField(max_length = 500)
+    nombre_dueño        = models.CharField(max_length = 50, null=True)
+    estado              = models.IntegerField(default = 0, choices = opcionEstado)
+    fecha_creacion      = models.DateField(null = True)
+    
+    def __str__(self):
+        return f'{self.id_orden}'
+
+class Ordenxproducto(models.Model):
+    id_ordenxproducto   = models.AutoField(primary_key=True)
+    id_orden_relacion   = models.ForeignKey(Orden, on_delete = models.CASCADE)
+    id_producto         = models.ForeignKey(Producto,on_delete = models.CASCADE)
+    cantidad            = models.IntegerField()
+
+    class Meta:
+        ordering = ['-id_ordenxproducto']
 
     def __str__(self):
-        return self.id_orden
+         return f'self.id_ordenxproducto'
+

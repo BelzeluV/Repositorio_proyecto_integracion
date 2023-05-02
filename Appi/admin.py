@@ -16,3 +16,4 @@ class admincategoria(admin.ModelAdmin):
 admin.site.register(Producto,adminProducto)
 admin.site.register(Proveedor,adminProveedor)
 admin.site.register(Categoria,admincategoria)
+# Register your models here.
