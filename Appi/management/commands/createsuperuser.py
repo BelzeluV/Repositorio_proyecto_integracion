@@ -5,12 +5,12 @@ class Command(BaseCommand):
     help = 'Crea un superusuario con campos adicionales personalizados'
 
     def handle(self, *args, **options):
-        # Crear el usuario base utilizando la clase padre
+        # create base user using the main class
         super().handle(*args, **options)
 
-        # Obtener el objeto de usuario recién creado
+        # get the new object 
         username = options.get('username')
-        user = Usuario.objects.get(username=username)
+        user = Usuario.objects.get(username=username) 
 
         # Agregar los campos adicionales personalizados al usuario
         user.RUT = options.get('rut')
