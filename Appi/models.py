@@ -71,7 +71,7 @@ opcionescomuna = [
 ]
 
 class Usuario(AbstractUser):
-    RUT                 = models.CharField(default = '', max_length = 13,  unique = True, error_messages = {"unique": "El rut ya está registrado."},blank=True)
+    RUT                 = models.CharField(default = '', max_length = 13,  unique = True, error_messages = {"unique": "El rut ya está registrado."}, blank=True)
     nombre_real         = models.CharField(default = '', max_length = 50)
     nacimiento          = models.DateField(null = True)
     genero              = models.IntegerField(default = 2, choices = opcionesSexo)
@@ -88,39 +88,49 @@ class Usuario(AbstractUser):
     
 class Proveedor(models.Model):
     id_proveedor        = models.AutoField(primary_key = True)
-    nombreproveedor     = models.CharField(max_length = 40)
-    
+    nombreproveedor     = models.CharField(max_length = 50)
     
     def __str__(self):
         return  self.nombreproveedor
 
+class TipoProducto(models.Model):
+    id_tipo             = models.AutoField(primary_key = True)
+    nombretipo          = models.CharField(max_length = 30, unique = True, error_messages = {"unique" : "Esta tipo de producto ya está registrado"})
+    
+    def __str__(self):
+        return self.nombretipo
 
 class Categoria(models.Model):
     id_categoria        = models.AutoField(primary_key = True)
-    nombrecategoria     = models.CharField(max_length = 20)
-
+    nombrecategoria     = models.CharField(max_length = 30, unique = True, error_messages = {"unique" : "Esta categoria ya está registrada"})
+    tipo_producto       = models.ForeignKey(TipoProducto,on_delete = models.PROTECT)
     def __str__(self):
         return self.nombrecategoria
+    
+class Subcategoria(models.Model):
+    id_subcategoria     = models.AutoField(primary_key = True)
+    nombre_subcategoria = models.CharField(max_length = 30, unique = True, error_messages = {"unique" : "Esta subcategoria ya está registrada"})
+    categoria           = models.ForeignKey(Categoria, on_delete = models.PROTECT)
+    def __str__(self):
+        return self.nombre_subcategoria
 
 class Producto(models.Model):
     id_producto         = models.AutoField(primary_key = True)
-    SKU                 = models.CharField(max_length = 10, unique = True, error_messages={"unique": "Este SKU ya está registrado"})
+    SKU                 = models.CharField(max_length = 10, unique = True, error_messages = {"unique" : "Este SKU ya está registrado"})
     nombre_producto     = models.CharField(max_length = 60)
     descripcion         = models.TextField(max_length = 1000)
     Precio_compra       = models.IntegerField()
     precio_venta        = models.IntegerField()
-    precio_oferta       = models.IntegerField()
+    precio_oferta       = models.IntegerField(blank = True)
     stock               = models.IntegerField()
-    proveedor           = models.ForeignKey(Proveedor, on_delete = models.CASCADE)
-    categoria_producto  = models.ForeignKey(Categoria, on_delete = models.CASCADE)
+    subcat_producto     = models.ForeignKey(Subcategoria, on_delete = models.PROTECT)
     imagen_producto     = models.ImageField(upload_to = "productos", blank = True)
     activo              = models.BooleanField(default = True)
-
 
     def __str__(self): 
         return self.nombre_producto
 
-##modelo de la Facturacion de las ventas
+##modelos de las ordenes de servicio
 class Orden(models.Model):
     id_orden            = models.AutoField(primary_key = True)
     descripcion         = models.CharField(max_length = 500)
@@ -134,12 +144,11 @@ class Orden(models.Model):
 class Ordenxproducto(models.Model):
     id_ordenxproducto   = models.AutoField(primary_key=True)
     id_orden_relacion   = models.ForeignKey(Orden, on_delete = models.CASCADE)
-    id_producto         = models.ForeignKey(Producto,on_delete = models.CASCADE)
+    id_producto         = models.ForeignKey(Producto, on_delete = models.CASCADE)
     cantidad            = models.IntegerField()
 
     class Meta:
         ordering = ['-id_ordenxproducto']
 
     def __str__(self):
-         return f'self.id_ordenxproducto'
-
+         return (f'Orden: {self.id_orden_relacion}, Producto relacionado: {self.id_producto}').format(**self.__dict__)

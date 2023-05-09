@@ -4,13 +4,19 @@ from django.conf.urls.static import static
 from django.urls import include, path
 from rest_framework import routers
 from Appi.views import *
-from Appi.api.models_viewsets import *
+from Appi.api.viewsets import *
 
 
 router = routers.DefaultRouter()
-router.register(r'productos', ProductoViewset)
+
 router.register(r'proveedores', ProveedorViewset)
+router.register(r'tipoProd', TipoProductoViewset)
 router.register(r'categorias', CategoriaViewset)
+router.register(r'subcategorias', SubcategoriaViewset)
+router.register(r'productos', ProductoViewset)
+router.register(r'Ordenes', OrdenViewset)
+router.register(r'OrdenxProductos', OrdenxproductoViewset)
+
 
 
 urlpatterns = [
