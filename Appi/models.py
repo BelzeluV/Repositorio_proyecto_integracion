@@ -89,14 +89,14 @@ class Usuario(AbstractUser):
 class Proveedor(models.Model):
     id_proveedor        = models.AutoField(primary_key = True)
     nombreproveedor     = models.CharField(max_length = 50)
-    
+
     def __str__(self):
         return  self.nombreproveedor
 
 class TipoProducto(models.Model):
     id_tipo             = models.AutoField(primary_key = True)
     nombretipo          = models.CharField(max_length = 30, unique = True, error_messages = {"unique" : "Esta tipo de producto ya está registrado"})
-    
+
     def __str__(self):
         return self.nombretipo
 
