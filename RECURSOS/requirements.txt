@@ -2,3 +2,5 @@ pillow
 djangorestframework
 django
 cx_oracle
+crispy_bootstrap4
+django-crispy-forms

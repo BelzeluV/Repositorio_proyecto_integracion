@@ -1,0 +1,15 @@
+.footer {
+
+    bottom: 0;
+    border-radius: 10px;
+    background-color: rgb(14, 82, 137);
+}
+
+.textocentro {
+    text-align: center;
+}
+
+#navbarcolor{
+    background-color: rgb(210, 111, 30);
+    border-radius: 8px;
+}

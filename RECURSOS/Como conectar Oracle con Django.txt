@@ -46,7 +46,7 @@ para encontrar el puerto y el host debes hacer lo siguiente en CMD:
 
 	lsnrctl status
 
-esta linea de codigo te va a mostrar toda la informacion que necesitas saber sobre el host de la base de datos y del puerto de la misma, se ve de la siguiente manera en la consola:
+esta linea de código te va a mostrar toda la informacion que necesitas saber sobre el host de la base de datos y del puerto de la misma, se ve de la siguiente manera en la consola:
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))		<<<<<<esta es la informacion que buscas>>>>>>>
@@ -72,7 +72,7 @@ The command completed successfully
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-luego en el SQL developer debes saber que version tienes, en el caso de oracle express edition es XE, pero si no tienes claro como saberlo debes ejecutar la siguiente linea de codigo en el SQLdeveloper:
+luego en el SQL developer debes saber que version tienes, en el caso de oracle express edition es XE, pero si no tienes claro como saberlo debes ejecutar la siguiente linea de código en el SQLdeveloper:
 
 	SELECT value FROM v$parameter WHERE name = 'service_names';
 
@@ -115,4 +115,4 @@ y por ultimo pones el siguiente comando:
 	
 	python manage.py migrate
 
-y estaria listo, luego ahi ves que haces con la parte de los procedimientos almacenados en la base de datos que te enseñe a crear
+y estaría listo, luego ahi ves que haces con la parte de los procedimientos almacenados en la base de datos que te enseñe a crear

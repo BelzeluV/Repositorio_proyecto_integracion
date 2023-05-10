@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 from rest_framework import routers
-from Appi.views import *
+from Appi import views as Appi
 from Appi.api.viewsets import *
 
 
@@ -20,8 +20,28 @@ router.register(r'OrdenxProductos', OrdenxproductoViewset)
 
 
 urlpatterns = [
+    #partes vitales del proyecto
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
+
+
+    #vistas de la pagina de los CRUD de los modelos
+    path('manager/categorias/',                 Appi.menuCategorias,                            name="categorias"),
+
+
+
+
+
+    path('manager/tipo_de_producto/',          Appi.menuTipoProducto,                          name="tipoproducto"),
+
+
+
+
+
+    path('manager/subcategorias/',          Appi.menuSubcategorias,                          name="subcategorias"),
+
+
+
 ]
 
 
