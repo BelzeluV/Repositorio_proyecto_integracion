@@ -151,4 +151,4 @@ class Ordenxproducto(models.Model):
         ordering = ['-id_ordenxproducto']
 
     def __str__(self):
-         return (f'Orden: {self.id_orden_relacion}, Producto relacionado: {self.id_producto}').format(**self.__dict__)
+        return (f'Orden: {self.id_orden_relacion}, Producto relacionado: {self.id_producto}').format(**self.__dict__)
