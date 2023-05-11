@@ -1,15 +1,31 @@
-.footer {
-
-    bottom: 0;
-    border-radius: 10px;
-    background-color: rgb(14, 82, 137);
+body {
+    background-color: rgb(26, 25, 25);
 }
 
 .textocentro {
     text-align: center;
+    box-shadow: inset;
 }
 
-#navbarcolor{
-    background-color: rgb(210, 111, 30);
+#navbarcolor {
     border-radius: 8px;
+    border: 2px solid white;
+    box-shadow: 0 0 15px orangered, inset 0 0 5px orangered;
+    margin-top: 10px;
+}
+
+#footer {
+    margin-bottom: 10px;
+    border: 2px solid white;
+    box-shadow: 0 0 15px rgb(1, 119, 255), inset 0 0 5px rgb(1, 119, 255);
+    border-top-left-radius: 10px 10px;
+    border-top-right-radius: 10px 10px;
+    bottom: 0;
+}
+
+#FuenteTitulo {
+    font-family: "Dancing Script", cursive;
+    margin: 0;
+    font-size: 50px;
+    text-shadow: 0 0 5px red, 0 0 15px red, 0 0 30px red, 0 0 50px red;
 }

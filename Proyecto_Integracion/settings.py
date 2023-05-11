@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'crispy_forms',
     'crispy_bootstrap4',
-    'livereload'
+    'livereload',
 ]
 
 MIDDLEWARE = [
@@ -40,7 +40,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'livereload.middleware.LiveReloadScript',
 ]
+
 MIDDLEWARE_CLASSES = (
     'livereload.middleware.LiveReloadScript',
 )

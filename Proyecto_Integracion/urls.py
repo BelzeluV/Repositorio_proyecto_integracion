@@ -23,7 +23,7 @@ urlpatterns = [
     #partes vitales del proyecto
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
-
+    path('test/', Appi.test, name="testeo"),
 
     #vistas de la pagina de los CRUD de los modelos
     path('manager/categorias/',                 Appi.menuCategorias,                            name="categorias"),
