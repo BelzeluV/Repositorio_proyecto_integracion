@@ -5,3 +5,4 @@ cx_oracle
 crispy_bootstrap4
 django-crispy-forms
 django-livereload-server
+requests

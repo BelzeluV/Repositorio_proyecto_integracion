@@ -1,3 +1,10 @@
+--borrar usuario
+ALTER SESSION SET "_ORACLE_SCRIPT"=true;
+
+DROP USER UsuarioAppi CASCADE;
+
+--crear usuario
+
 ALTER SESSION SET "_ORACLE_SCRIPT"=true;
 
 CREATE USER UsuarioAppi IDENTIFIED BY "Asdfqwer1234"

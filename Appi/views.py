@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from .api import services
+from .api.services import *
 # Create your views here.
 
 #CRUD 
@@ -14,9 +14,15 @@ def menuTipoProducto(request):
 
 def menuSubcategorias(request):
     return render(request,"CRUD_subcategorias/menu.html")
+
+
 def test(request):
-    variable = services.generate_request
-      
+    productos = "subcategorias/"
+    variable = consultasSubcategorias.generate_request(productos)
     
-    ctx = {"variable": variable}
-    return render(request,"test/test.html",ctx)
+
+
+
+    
+    data = {"variable": variable}
+    return render(request,"test/test.html", data)
