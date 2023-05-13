@@ -89,7 +89,11 @@ class Usuario(AbstractUser):
 class Proveedor(models.Model):
     id_proveedor        = models.AutoField(primary_key = True)
     nombreproveedor     = models.CharField(max_length = 50)
-    
+    direccion           = models.CharField(max_length = 100)
+    telefono            = models.CharField(max_length = 20)
+    email               = models.EmailField()
+    fecha_registro      = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return  self.nombreproveedor
 
