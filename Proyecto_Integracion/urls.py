@@ -5,6 +5,7 @@ from django.urls import include, path
 from rest_framework import routers
 from Appi import views as Appi
 from Appi.api.viewsets import *
+from AppClientes import views as Clientes
 
 
 router = routers.DefaultRouter()
@@ -29,19 +30,14 @@ urlpatterns = [
     path('manager/categorias/',                 Appi.menuCategorias,                            name="categorias"),
 
 
-
-
-
     path('manager/tipo_de_producto/',          Appi.menuTipoProducto,                          name="tipoproducto"),
-
-
-
 
 
     path('manager/subcategorias/',          Appi.menuSubcategorias,                          name="subcategorias"),
 
 
-
+#Vistas para los clientes
+    path('inicio/',                                Clientes.inicio,                                    name="clientesinicio")
 ]
 
 

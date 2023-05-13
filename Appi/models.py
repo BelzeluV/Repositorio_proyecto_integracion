@@ -114,6 +114,12 @@ class Subcategoria(models.Model):
     def __str__(self):
         return self.nombre_subcategoria
 
+class Marca(models.Model):
+    id_marca            = models.AutoField(primary_key = True)
+    nombre_marca        = models.CharField(max_length = 40)
+    def __str__(self):
+        return self.nombre_marca
+
 class Producto(models.Model):
     id_producto         = models.AutoField(primary_key = True)
     SKU                 = models.CharField(max_length = 10, unique = True, error_messages = {"unique" : "Este SKU ya está registrado"})
@@ -123,6 +129,7 @@ class Producto(models.Model):
     precio_venta        = models.IntegerField()
     precio_oferta       = models.IntegerField(blank = True)
     stock               = models.IntegerField()
+    marca               = models.ForeignKey(Marca, on_delete = models.PROTECT)
     subcat_producto     = models.ForeignKey(Subcategoria, on_delete = models.PROTECT)
     imagen_producto     = models.ImageField(upload_to = "productos", blank = True)
     activo              = models.BooleanField(default = True)

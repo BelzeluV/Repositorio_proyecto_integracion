@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Appi.apps.AppiConfig',
+    'AppClientes.apps.AppclientesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +53,7 @@ ROOT_URLCONF = 'Proyecto_Integracion.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["Appi/Templates"],
+        'DIRS': ["Appi/Templates","AppClientes/Templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

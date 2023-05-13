@@ -18,10 +18,8 @@ def menuSubcategorias(request):
 
 def test(request):
     productos = "subcategorias/"
-    variable = consultasSubcategorias.generate_request(productos)
+    variable = "categorias/"
     
-
-
 
     
     data = {"variable": variable}

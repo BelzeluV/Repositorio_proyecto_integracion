@@ -1,6 +1,5 @@
 --borrar usuario
 ALTER SESSION SET "_ORACLE_SCRIPT"=true;
-
 DROP USER UsuarioAppi CASCADE;
 
 --crear usuario
