@@ -74,19 +74,16 @@ class request_api():
                     arreglo.append(diccionario)
                 return arreglo
             elif Url == "marcas/":
-                for marca in response:
-                    id_marca = response["id_marca"]
-                    nombre_marca = response["nombre_marca"]
-                    diccionario = {"id_marca":id_marca,"nombre_marca":nombre_marca}
+                for marcas in response:
+                    id_marca = marcas["id_marca"]
+                    nombre_marca = marcas["nombre_marca"]
+                    diccionario = {
+                        "id_marca" : id_marca,
+                        "nombre_marca" : nombre_marca
+                        }
                     arreglo.append(diccionario)
                 return arreglo
-            elif Url == "proveedores/":
-                for proveedor in response:
-                    id_proveedor = response["id_proveedor"]
-                    nombreproveedor = response["nombreproveedor"]
-                    diccionario = {"id_proveedor" : id_proveedor, "nombreproveedor" : nombreproveedor}
-                    arreglo.append(diccionario)
-                return arreglo
+            
             else:
                 error = [{"error":"no existen mas objetos en la base de datos"}]
                 return error
