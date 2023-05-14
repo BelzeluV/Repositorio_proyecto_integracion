@@ -15,12 +15,3 @@ def menuTipoProducto(request):
 def menuSubcategorias(request):
     return render(request,"CRUD_subcategorias/menu.html")
 
-
-def test(request):
-    productos = "subcategorias/"
-    variable = "categorias/"
-    
-
-    
-    data = {"variable": variable}
-    return render(request,"test/test.html", data)
