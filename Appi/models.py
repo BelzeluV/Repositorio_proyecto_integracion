@@ -90,7 +90,7 @@ class Proveedor(models.Model):
     id_proveedor        = models.AutoField(primary_key = True)
     nombreproveedor     = models.CharField(max_length = 50)
     direccion           = models.CharField(max_length = 100)
-    telefono            = models.CharField(max_length = 20)
+    telefono            = models.CharField(default = '', max_length = 15)
     email               = models.EmailField()
     fecha_registro      = models.DateTimeField(auto_now_add=True)
 
@@ -133,8 +133,11 @@ class Producto(models.Model):
     precio_venta        = models.IntegerField()
     precio_oferta       = models.IntegerField(blank = True)
     stock               = models.IntegerField()
-    marca               = models.ForeignKey(Marca, on_delete = models.PROTECT)
-    subcat_producto     = models.ForeignKey(Subcategoria, on_delete = models.PROTECT)
+    marca               = models.ForeignKey(Marca, on_delete = models.PROTECT, null = True)
+    tipo_producto       = models.ForeignKey(TipoProducto, on_delete = models.PROTECT, null = True)
+    categoria_producto  = models.ForeignKey(Categoria, on_delete = models.PROTECT, null = True)
+    subcat_producto     = models.ForeignKey(Subcategoria, on_delete = models.PROTECT, null = True)
+    proveedor           = models.ForeignKey(Proveedor, on_delete = models.PROTECT, null = True)
     imagen_producto     = models.ImageField(upload_to = "productos", blank = True)
     activo              = models.BooleanField(default = True)
 
@@ -148,7 +151,7 @@ class Orden(models.Model):
     nombre_dueño        = models.CharField(max_length = 50, null=True)
     estado              = models.IntegerField(default = 0, choices = opcionEstado)
     fecha_creacion      = models.DateField(null = True)
-    
+    usuario_rel         = models.ForeignKey(Usuario, on_delete= models.PROTECT)
     def __str__(self):
         return f'{self.id_orden}'
 
