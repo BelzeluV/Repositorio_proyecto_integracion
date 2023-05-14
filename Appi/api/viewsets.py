@@ -29,3 +29,7 @@ class OrdenViewset(viewsets.ModelViewSet):
 class OrdenxproductoViewset(viewsets.ModelViewSet):
     queryset            = Ordenxproducto.objects.all()
     serializer_class    = OrdenxproductoSerializer
+
+class MarcaViewset(viewsets.ModelViewSet):
+    queryset            = Marca.objects.all()
+    serializer_class    = MarcaSerializer

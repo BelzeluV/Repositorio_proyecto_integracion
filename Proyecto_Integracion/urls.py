@@ -17,6 +17,7 @@ router.register(r'subcategorias', SubcategoriaViewset)
 router.register(r'productos', ProductoViewset)
 router.register(r'Ordenes', OrdenViewset)
 router.register(r'OrdenxProductos', OrdenxproductoViewset)
+router.register(r'marcas', MarcaViewset)
 
 
 

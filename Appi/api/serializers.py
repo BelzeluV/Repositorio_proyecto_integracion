@@ -37,3 +37,8 @@ class OrdenxproductoSerializer(serializers.ModelSerializer):
     class Meta:
         model   = Ordenxproducto
         fields  = '__all__'
+
+class MarcaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   = Marca
+        fields  = '__all__'

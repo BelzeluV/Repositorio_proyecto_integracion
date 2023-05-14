@@ -23,12 +23,14 @@ def test(request):
     prod = "productos/"
     tipo = "tipoProd/"
     mar = "marcas/"
+    prov = "proveedores/"
     productos = request_api.get(prod)
     subcategorias = request_api.get(subcat)
     categorias = request_api.get(cat)
     tipoproducto = request_api.get(tipo)
-    marcas = request_api.get("marcas/")
-    
-    data = {"subcategorias" : subcategorias, "categorias" : categorias,"productos": productos,"tipoproducto": tipoproducto, "marcas" : marcas}
+    marcas = request_api.get(mar)
+    proveedores = request_api.get(prov)
+    error_intencional = request_api.get("lalala/")
+    data = {"subcategorias" : subcategorias, "categorias" : categorias,"productos": productos,"tipoproducto": tipoproducto, "marcas" : marcas, "proveedores" : proveedores,"error_intencional" : error_intencional}
 
     return render(request,"test/test.html", data)
