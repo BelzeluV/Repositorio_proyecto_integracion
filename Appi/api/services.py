@@ -11,7 +11,7 @@ class request_api():
         try:
             response = requests.get(base+Url).json()
             arreglo = []
-            if response:
+            if response != None:
                 if Url == "subcategorias/":
                     for subcategoria in response:
                         id_subcategoria = subcategoria["id_subcategoria"]               #el elemento de  la subcategoria
@@ -104,9 +104,11 @@ class request_api():
                         }
                         arreglo.append(diccionario)
                     return arreglo
+            else:
+                print(Fore.RED + "no hubo respuesta del servidor, verifica la conexión a internet," +Style.RESET_ALL+"\n")
         except requests.exceptions.RequestException as e:
             error_msg = str(e)
-            print(Fore.RED + "hubo un problema con la peticion: "+ error_msg + Style.RESET_ALL)
+            print(Fore.RED + "la Url "+Url+" ingresada no tiene coincidencias en la API del servidor\n     código de error: "+ error_msg + Style.RESET_ALL+"\n")
             return error
     def delete(url,id):
         wena = 2
