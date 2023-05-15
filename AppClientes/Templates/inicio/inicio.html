@@ -9,6 +9,8 @@
         {% for kndex in productos %}
         <div class="col-6 ">
             <div class="card bg-dark my-2">
+                <img class="card-img-top" src="{{ kndex.imagen_producto.url }}" alt="Card image cap">
+                
                 <h1 style="color: aliceblue;">INFO DEL PRODUCTO</h1>
                 <p style="color: aliceblue;">id_producto:  {{kndex.id_producto}}      </p>
                 <p style="color: aliceblue;">SKU:  {{kndex.sku}}      </p>
@@ -20,7 +22,6 @@
                 <p style="color: aliceblue;">stock:  {{kndex.stock}}      </p>
                 <p style="color: aliceblue;">marca:  {{kndex.marca}}      </p>
                 <p style="color: aliceblue;">subcat_producto:  {{kndex.subcat_producto}}      </p>
-                <p style="color: aliceblue;">imagen_producto:  {{kndex.imagen_producto}}      </p>
                 <p style="color: aliceblue;">activo:  {{kndex.activo}}      </p>
                 <h1 style="color: aliceblue;">INFO DE LA SUBCATEGORIA DEL PRODUCTO</h1>
 

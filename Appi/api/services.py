@@ -110,5 +110,8 @@ class request_api():
             error_msg = str(e)
             print(Fore.RED + "la Url "+Url+" ingresada no tiene coincidencias en la API del servidor\n     código de error: "+ error_msg + Style.RESET_ALL+"\n")
             return error
-    def delete(url,id):
-        wena = 2
+    def post(Url, data):
+        response = requests.post(base+Url+"post/", params=data).json()
+
+    def delete(Url,id):
+        response = requests.delete(base+Url+id) 
