@@ -28,21 +28,47 @@ urlpatterns = [
     path('test/', Appi.test, name="testeo"),
 
     #vistas de la pagina de los CRUD de los modelos
-    path('manager/categorias/',                 Appi.menuCategorias,                            name="categorias"),
+    path('manager/categorias/',                     Appi.menuCategorias,                            name="categorias"),
 
 
-    path('manager/tipo_de_producto/',          Appi.menuTipoProducto,                          name="tipoproducto"),
+    path('manager/tipo_de_producto/',               Appi.menuTipoProducto,                          name="tipoproducto"),
 
 
-    path('manager/subcategorias/',          Appi.menuSubcategorias,                          name="subcategorias"),
+    path('manager/subcategorias/',                  Appi.menuSubcategorias,                         name="subcategorias"),
 
 
 #Vistas para los clientes
-    path('inicio/',                                Clientes.inicio,                                    name="clientesinicio")
+    path('',                                 Clientes.inicio,                                name="clientesinicio")
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 """
 URL configuration for Proyecto_Integracion project.

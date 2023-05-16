@@ -1,6 +1,6 @@
 pillow 
 djangorestframework
-django
+django==4.0.5
 cx_oracle
 crispy_bootstrap4
 django-crispy-forms

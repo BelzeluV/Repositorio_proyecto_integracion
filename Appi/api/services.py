@@ -115,3 +115,7 @@ class request_api():
 
     def delete(Url,id):
         response = requests.delete(base+Url+id) 
+
+
+
+
