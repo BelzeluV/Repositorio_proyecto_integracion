@@ -38,7 +38,8 @@ urlpatterns = [
 
 
 #Vistas para los clientes
-    path('',                                 Clientes.inicio,                                name="clientesinicio")
+    path('',                                        Clientes.inicio,                                name="inicio"),
+    path('detalle/<id>/',                           Clientes.detalle,                               name="detalle"),
 ]
 
 if settings.DEBUG:

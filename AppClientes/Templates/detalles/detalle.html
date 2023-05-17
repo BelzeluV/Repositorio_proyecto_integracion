@@ -1,0 +1,92 @@
+{% extends 'base.html'%}
+{% load humanize %}
+{% block content %}
+<style>
+    .tarjetarecomendacion {
+    border-radius: 8px;
+    border: 3px solid white;
+    box-shadow: 0 0 30px rgb(254, 0, 250), inset 0 0 10px rgb(254, 0, 250);
+    margin-top: 10px;
+}
+.tarjeta_contenedor{
+    border-radius: 8px;
+    border: 3px solid white;
+    box-shadow: 0 0 25px rgb(169, 254, 0), inset 0 0 45px rgb(169, 254, 0);
+}
+</style>
+<div class="container">
+    <div class="card my-5 tarjeta_contenedor" style="background-color:rgba(0, 0, 0, 0.934);">
+        <div class="row justify-content-center ">
+            <div class="col-md-4 col-lg-3 mx-2 my-5 sticky-top" >
+                <div class="card bg-dark tarjetaelemento" style="background-color: #0e0e0e; position: sticky;">
+                    <img src="{{producto.imagen_producto}}" class="imagen-carta card-img-top " alt="">
+                    <div class="card-body" style="color: aliceblue;">
+                        {% for a in marcas %}
+                        {% if producto.marca == a.id_marca %}
+                        <p class="card-text">{{a.nombre_marca}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        <h5 class="card-title">${{producto.precio_venta | intcomma}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-8 mx-2 my-5">
+                <div class="card bg-dark mb-5">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h1 style="text-align: center; color: aliceblue;">Detalles del producto</h1>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-7">
+                                <div class="card" style="background-color: #6e6e6e;">
+                                    <div class="card-body">
+                                        <h1 class="card-title" style="color: aliceblue;">TARJETA 1</h1>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="card"style="background-color: #414141;">
+                                    <div class="card-body" >
+                                        <h1 class="card-title" style="color: aliceblue;">TARJETA 2</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-5">
+                    <h1 style="text-align: center;">Podría interesarte...</h1>
+                </div>
+
+                <div class="row justify-content-center py-2">
+                    {% for i in recomendaciones %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 px-4 py-2">
+                        <div class="card bg-dark tarjetaelemento tarjetarecomendacion">
+                            <div style="align-items: center;">
+                                {% if i.imagen_producto %}
+                                <img src="{{i.imagen_producto}}" class="card-img-top imagen-carta imagen_carta_inicio">
+                                {% endif %}
+                                <div class="card-body">
+                                    <div style="text-align: center;">
+                                        <h5> <a href="" style="color: aliceblue;">${{ i.precio_venta | intcomma }} |
+                                                {{i.nombre_producto}}</a> </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="{% url 'detalle' i.id_producto %}" class="btn btn-primary">detalles</a>
+                                    <a href="#" class="btn btn-success">¡carro!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

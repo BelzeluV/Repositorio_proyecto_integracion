@@ -4,7 +4,7 @@
 <html lang="es">
 
 
-</html>
+
 
 <head>
     <title>{% block title %} {% endblock %}</title>
@@ -21,7 +21,8 @@
         integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    
+    <link rel="stylesheet" type="text/css" href="{%static 'css/pagina.css'}">
+
 
     <script src="{% static 'colores.js' %}"></script>
 </head>
@@ -40,7 +41,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Link</a>
@@ -59,16 +60,13 @@
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                        </li>
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                     <div class="d-flex">
-                        
+
                     </div>
                 </div>
             </div>
@@ -94,47 +92,35 @@
             <div class="col mb-3">
                 <h5>Section</h5>
                 <ul class="nav flex-column columna1">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    <li class="nav-item mb-2">Home</li>                   <li class="nav-item mb-2">Pricing</li>
+                    <li class="nav-item mb-2">FAQs</li>
+                    <li class="nav-item mb-2">About</li>
                 </ul>
             </div>
 
             <div class="col mb-3">
                 <h5>Section</h5>
                 <ul class="nav flex-column columna2">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    <li class="nav-item mb-2">Home</li>
+                    <li class="nav-item mb-2">Features</li>
+                    <li class="nav-item mb-2">Pricing</li>
+                    <li class="nav-item mb-2">FAQs</li>
+                    <li class="nav-item mb-2">About</li>
                 </ul>
             </div>
 
             <div class="col mb-3">
                 <h5>Section</h5>
                 <ul class="nav flex-column columna3">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    <li class="nav-item mb-2">Home</li>
+                    <li class="nav-item mb-2">Features</li>
+                    <li class="nav-item mb-2">Pricing</li>
+                    <li class="nav-item mb-2">FAQs</li>
+                    <li class="nav-item mb-2">About</li>
                 </ul>
             </div>
         </footer>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
+
+</html>
