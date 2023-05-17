@@ -29,13 +29,9 @@ body {
     font-size: 50px;
     text-shadow: 0 0 5px red, 0 0 15px red, 0 0 30px red, 0 0 50px red;
 }
-.imagen_carousel {
-    border-radius: 5px;
-    border: 1px solid #ffffff;
-    
-    width: 1269px;
-    height: 400px;
-    object-fit: none;
-    background-color: black;
-    filter: brightness(70%);
+
+.imagen-carta {
+    height: 250px;
+    background-color: #ffffff;
+    object-fit: scale-down;
 }

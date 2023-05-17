@@ -1,5 +1,4 @@
-
-class Carro:
+class Cart:
     def __init__(self,request):
         self.request = request
         self.session = request.session
@@ -8,8 +7,6 @@ class Carro:
             carro = self.session["carro"] = {}
         self.carro = carro
     
-
-
     def agregar(self,Producto):
         id_producto = (Producto.id_producto)
         print(id_producto)
@@ -28,8 +25,6 @@ class Carro:
                     value["cantidad"] += 1
                     
         self.guardar_carro()
-
-
 
     def agregar(self,Producto):
         id_producto = str(Producto.id_producto)
