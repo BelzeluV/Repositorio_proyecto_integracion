@@ -1,70 +1,38 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 <body>
-    <br>
-    <br>
-    {{subcategorias}}
-    <br>
-    <br>
-    {{categorias}}
-    <br>
-    <br>
-    {{productos}}
-    <br>
-    <br>
-    {{tipoproducto}}
-    <br>
-    <br>
-    {{marcas}}
-    <br>
-    <br>
-    {{proveedores}}
-    <br>
-    <br>
-    {{error_intencional}}
-
-    {% if config == True %}
-<div class="container">
-    <div class="row justify-content-center">
-        {% for kndex in productos %}
-        <div class="col-6 ">
-            <div class="card bg-dark my-2">
-                <img class="card-img-top" src="{{ kndex.imagen_producto.url }}" alt="Card image cap">
-
-                <h1 style="color: aliceblue;">INFO DEL PRODUCTO</h1>
-                <p style="color: aliceblue;">id_producto: {{kndex.id_producto}} </p>
-                <p style="color: aliceblue;">SKU: {{kndex.sku}} </p>
-                <p style="color: aliceblue;">nombre_producto: {{kndex.nombre_producto}} </p>
-                <p style="color: aliceblue;">descripcion: {{kndex.descripcion}} </p>
-                <p style="color: aliceblue;">Precio_compra: {{kndex.Precio_compra}} </p>
-                <p style="color: aliceblue;">precio_venta: {{kndex.precio_venta}} </p>
-                <p style="color: aliceblue;">precio_oferta: {{kndex.precio_oferta}} </p>
-                <p style="color: aliceblue;">stock: {{kndex.stock}} </p>
-                <p style="color: aliceblue;">marca: {{kndex.marca}} </p>
-                <p style="color: aliceblue;">subcat_producto: {{kndex.subcat_producto}} </p>
-                <p style="color: aliceblue;">activo: {{kndex.activo}} </p>
-                <h1 style="color: aliceblue;">INFO DE LA SUBCATEGORIA DEL PRODUCTO</h1>
-
-                {% for index in subcategorias %}
-                {% if kndex.subcat_producto == index.id_subcategoria %}
-                <p style="color: aliceblue;">id: {{index.id_subcategoria}} </p>
-                <p style="color: aliceblue;">nombre: {{index.nombre_subcategoria}}</p>
-                <h1 style="color: aliceblue;">INFO DE LA CATEGORIA DEL PRODUCTO</h1>
-
-                {% for jndex in categorias %}
-                {% if index.categoria == jndex.id_categoria %}
-                <p style="color: aliceblue;">id categoria: {{jndex.id_categoria}} </p>
-                <p style="color: aliceblue;">nombre categoria: {{jndex.nombrecategoria}} </p>
-                <p style="color: aliceblue;">tipo de categoria {{jndex.tipo_producto}}</p>
-                {% endif %}
-                {% endfor %}
-                {% endif %}
-                {% endfor %}
-
+    <div class="row justify-content-center py-5">
+        {% for i in productos %}
+        <div class="col-lg-3 col-md-6 col-sm-12 px-4 py-4 animate__animated animate__fadeIn" style="animation-delay: {{ retraso }}s;">
+            <div class="card bg-dark tarjetaelemento" style=" 
+                border-radius: 8px;
+                border: 3px solid white;
+                box-shadow: 0 0 35px var(--color-aleatorio), inset 0 0 50px var(--color-aleatorio);
+                margin-top: 10px;">
+                <div style="align-items: center;">
+                    {% if i.imagen_producto %}
+                    <img src="{{i.imagen_producto}}" class="card-img-top imagen-carta imagen_carta_inicio">
+                    {% endif %}
+                    <div class="card-body">
+                        <div style="text-align: center;">
+                            <h4> <a href="" style="color: aliceblue;">${{ i.precio_venta | intcomma }} |
+                                    {{i.nombre_producto}}</a> </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="{% url 'detalle' i.id_producto %}" class="btn btn-primary">detalles</a>
+                        <a href="#" class="btn btn-success">¡al carro!</a>
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
     </div>
-</div>
-{% endif %}
 </body>
+{% endblock %}

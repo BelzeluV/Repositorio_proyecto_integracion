@@ -17,20 +17,7 @@ def menuSubcategorias(request):
 
 
 def test(request):
-
-    subcat = "subcategorias/"
-    cat = "categorias/"
-    prod = "productos/"
-    tipo = "tipoProd/"
-    mar = "marcas/"
-    prov = "proveedores/"
-    productos = request_api.get(prod)
-    subcategorias = request_api.get(subcat)
-    categorias = request_api.get(cat)
-    tipoproducto = request_api.get(tipo)
-    marcas = request_api.get(mar)
-    proveedores = request_api.get(prov)
-    error_intencional = request_api.get("lalala/")
-    data = {"subcategorias" : subcategorias, "categorias" : categorias,"productos": productos,"tipoproducto": tipoproducto, "marcas" : marcas, "proveedores" : proveedores,"error_intencional" : error_intencional}
-
+    retraso = "dd"
+    productos = request_api.get("productos/")
+    data = {"productos" : productos}
     return render(request,"test/test.html", data)

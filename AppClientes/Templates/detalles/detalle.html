@@ -13,12 +13,23 @@
     border: 3px solid white;
     box-shadow: 0 0 25px rgb(169, 254, 0), inset 0 0 45px rgb(169, 254, 0);
 }
+
+.tarjetaitem {
+    border-radius: 8px;
+    border: 3px solid white;
+    box-shadow: 0 0 30px rgb(0, 100, 255), inset 0 0 10px rgb(0, 100, 255);
+    margin-top: 10px;
+}
+.tarjetainteres{    border-radius: 8px;
+    border: 3px solid white;
+    box-shadow: 0 0 30px white, inset 0 0 10px white;
+    margin-top: 10px;}
 </style>
 <div class="container">
     <div class="card my-5 tarjeta_contenedor" style="background-color:rgba(0, 0, 0, 0.934);">
         <div class="row justify-content-center ">
             <div class="col-md-4 col-lg-3 mx-2 my-5 sticky-top" >
-                <div class="card bg-dark tarjetaelemento" style="background-color: #0e0e0e; position: sticky;">
+                <div class="card bg-dark tarjetaitem" style="background-color: #0e0e0e; position: sticky;">
                     <img src="{{producto.imagen_producto}}" class="imagen-carta card-img-top " alt="">
                     <div class="card-body" style="color: aliceblue;">
                         {% for a in marcas %}
@@ -56,7 +67,7 @@
                     </div>
                 </div>
 
-                <div class="card mb-5">
+                <div class="card mb-5 tarjetainteres" >
                     <h1 style="text-align: center;">Podría interesarte...</h1>
                 </div>
 
