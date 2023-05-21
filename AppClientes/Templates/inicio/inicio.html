@@ -102,7 +102,7 @@
                 <div class="d-grid gap-2">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a href="{% url 'detalle' i.id_producto %}" class="btn btn-primary">detalles</a>
-                        <a href="#" class="btn btn-success">¡al carro!</a>
+                        <a href="{% url 'agregarProducto' i.id_producto %}" class="btn btn-success">¡al carro!</a>
                     </div>
                 </div>
             </div>

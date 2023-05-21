@@ -40,28 +40,17 @@ urlpatterns = [
 #Vistas para los clientes
     path('',                                        Clientes.inicio,                                name="inicio"),
     path('detalle/<id>/',                           Clientes.detalle,                               name="detalle"),
+    path('carro/',                                  Clientes.carro,                                 name="carro"),
+    path('AgregarProducto/<id>/',                   Clientes.agregar_producto,                      name = "agregarProducto"),
+    path('EliminarProducto/<id>/',                  Clientes.eliminar_producto,                     name = "eliminarProducto"),
+    path('RestarProducto/<id>/',                    Clientes.restar_producto,                       name = "restarProducto"),
+    path('LimpiarCarro/',                           Clientes.vaciar_carro,                          name = "limpiarCarro"),
+
+
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
 
 
 
