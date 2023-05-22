@@ -1,26 +1,34 @@
 {% extends "base.html"%}
 {% load humanize %}
 {% load static %}
-{% block title %} Plantitas | Carrito {% endblock %}
-{% block content%} 
+{% block title %}MusicPro | Carrito{% endblock %}
+{% block content%}
+<style>
+    .tarjetacarro {
+        border-radius: 8px;
+        border: 3px solid white;
+        box-shadow: 0 0 30px rgb(255, 191, 0), inset 0 0 10px rgb(255, 191, 0);
+        margin-top: 10px;
+    }
+</style>
 <div class="container-fluid py-4">
     <div class="row justify-content-center">
-        <div class="col-md-3 col-sm-10 py-2">
-            <div class="d-grid gap-2">
-                {% if request.session.carro.items %}
-                <a href="{% url 'inicio'%}" class="btn btn-primary">Seguir Comprando!</a>
-                {% else %}
-                <a href="{% url 'inicio'%}" class="btn btn-primary">Comenzar a Comprar!</a>
-                {% endif %}
-            </div>
-            <div class="card text-bg-dark">
+        <div class="col-md-4 col-sm-10 py-2">
+           
+            <div class="card bg-dark tarjetacarro">
+                <div class="d-grid gap-2">
+                    {% if request.session.carro.items %}
+                    <a href="{% url 'inicio'%}" class="btn btn-primary">Seguir Comprando!</a>
+                    {% else %}
+                    <a href="{% url 'inicio'%}" class="btn btn-primary">Comenzar a Comprar!</a>
+                    {% endif %}
+                </div>
                 <div class="card-body">
-                    <h1 style="text-align: center;">Carrito</h1>
+                    <h1 style="text-align: center; color: aliceblue;">Carrito</h1>
                     <div class="py-5">
                         <table class="table table-striped ">
                             <thead>
                                 <tr class="text-center">
-                                    <th scope="col" style="color: aliceblue;">SKU</th>
                                     <th scope="col" style="color: aliceblue;">Nombre</th>
                                     <th scope="col" style="color: aliceblue;">Precio</th>
                                     <th scope="col" style="color: aliceblue;">Cantidad</th>
@@ -28,43 +36,47 @@
                             </thead>
                             <tbody>
                                 {% if request.session.carro.items %}
-                                    {% for key, value in request.session.carro.items %}
-                                    <tr class="text-center">
-                                        <td style="color: aliceblue;">{{value.id_producto}}</td>
-                                        <td style="color: aliceblue;">{{value.nombre}}</td>
-                                        <td style="color: aliceblue;">${{value.precio | intcomma}}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href='{% url "agregarProducto" value.id_producto %}' class="btn btn-success btn-sm">+</a>
-                                                <button type="button" class="btn btn-lg btn-secondary btn-sm" disabled>{{value.cantidad}}</button>
-                                                <a href='{% url "restarProducto" value.id_producto %}' class="btn btn-danger btn-sm">-</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    {% endfor %}  
+                                {% for key, value in request.session.carro.items %}
+                                <tr class="text-center">
+                                    <td style="color: aliceblue;">{{value.nombre}}</td>
+                                    <td style="color: aliceblue;">${{value.precio | intcomma}}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href='{% url "agregarProducto" value.id_producto %}'
+                                                class="btn btn-success btn-sm">+</a>
+                                            <button type="button" class="btn btn-lg btn-secondary btn-sm"
+                                                disabled>{{value.cantidad}}</button>
+                                            <a href='{% url "restarProducto" value.id_producto %}'
+                                                class="btn btn-danger btn-sm">-</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
                                 {% else %}
-                                    <tr>
-                                        <td colspan="4">
-                                            <h5 style="text-align:center;">Aun No Hay Productos en el Carrito</h5>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <h5 style="text-align:center;color: aliceblue;">Aun No Hay Productos en el
+                                            Carrito</h5>
+                                    </td>
+                                </tr>
                                 {% endif %}
                             </tbody>
                         </table>
                     </div>
                     <div class="card-footer">
-                        <h4>Total: ${{importe_total_carro | intcomma}}</h4>
+                        <h4 style="color: aliceblue;">Total: ${{importe_total_carro | intcomma}}</h4>
                         <a href='{% url "limpiarCarro" %}' class="Btn btn-secondary"></a>
                     </div>
                 </div>
+                <div class="d-grid gap-2">
+                    {% if request.session.carro.items %}
+                    <a href="{% url 'inicio'%}" class="btn btn-success">Pagar</a>
+                    {% else %}
+                    <button type="button" class="btn btn-secondary btn-lg" disabled>Pagar</button>
+                    {% endif %}
+                </div>
             </div>
-            <div class="d-grid gap-2">
-                {% if request.session.carro.items %}
-                <a href="{% url 'inicio'%}" class="btn btn-success">Pagar</a>
-                {% else %}
-                <button type="button" class="btn btn-secondary btn-lg" disabled>Pagar</button>
-                {% endif %}
-            </div>
+            
         </div>
     </div>
 </div>

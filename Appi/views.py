@@ -22,7 +22,7 @@ def menuSubcategorias(request):
     return render(request,"CRUD_subcategorias/menu.html")
 
 
-def test(request):
+def test2(request):
     lista_productos = request_api.get("productos/")  # Obtener la lista de productos de la API
     tamaño = len(lista_productos)
     retraso_animacion = generar_arreglo(tamaño)  # Generar el arreglo de retrasos
@@ -33,4 +33,25 @@ def test(request):
                 print(i.key, j.key)
     data = {'lista_productos': lista_productos, 'retraso_animacion': retraso_animacion}
     
+    return render(request,"test/test.html", data)
+
+def test(request):
+    productos = "subcategorias/"
+    variable = "categorias/"
+    
+
+    subcat = "subcategorias/"
+    cat = "categorias/"
+    prod = "productos/"
+    tipo = "tipoProd/"
+    mar = "marcas/"
+    productos = request_api.get(prod)
+    subcategorias = request_api.get(subcat)
+    categorias = request_api.get(cat)
+    tipoproducto = request_api.get(tipo)
+    marcas = request_api.get("marcas/")
+    
+    data = {"variable": variable}
+    data = {"subcategorias" : subcategorias, "categorias" : categorias,"productos": productos,"tipoproducto": tipoproducto, "marcas" : marcas}
+
     return render(request,"test/test.html", data)

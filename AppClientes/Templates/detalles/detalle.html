@@ -1,65 +1,122 @@
 {% extends 'base.html'%}
 {% load humanize %}
+{% load static %}
+{% block title %}MusicPro | {{producto.nombre_producto}}{% endblock %}
+
 {% block content %}
 <style>
     .tarjetarecomendacion {
-    border-radius: 8px;
-    border: 3px solid white;
-    box-shadow: 0 0 30px rgb(254, 0, 250), inset 0 0 10px rgb(254, 0, 250);
-    margin-top: 10px;
-}
-.tarjeta_contenedor{
-    border-radius: 8px;
-    border: 3px solid white;
-    box-shadow: 0 0 25px rgb(169, 254, 0), inset 0 0 45px rgb(169, 254, 0);
-}
+        border-radius: 8px;
+        border: 3px solid white;
+        box-shadow: 0 0 30px rgb(254, 0, 250), inset 0 0 10px rgb(254, 0, 250);
+        margin-top: 10px;
+    }
 
-.tarjetaitem {
-    border-radius: 8px;
-    border: 3px solid white;
-    box-shadow: 0 0 30px rgb(0, 100, 255), inset 0 0 10px rgb(0, 100, 255);
-    margin-top: 10px;
-}
-.tarjetainteres{    border-radius: 8px;
-    border: 3px solid white;
-    box-shadow: 0 0 30px white, inset 0 0 10px white;
-    margin-top: 10px;}
+    .tarjeta_contenedor {
+        border-radius: 8px;
+        border: 3px solid white;
+        box-shadow: 0 0 25px rgb(169, 254, 0), inset 0 0 45px rgb(169, 254, 0);
+    }
+
+    .tarjetaitem {
+        border-radius: 8px;
+        border: 3px solid white;
+        box-shadow: 0 0 30px rgb(0, 100, 255), inset 0 0 10px rgb(0, 100, 255);
+        margin-top: 10px;
+    }
+
+    .tarjetainteres {
+        border-radius: 8px;
+        border: 3px solid white;
+        box-shadow: 0 0 30px white, inset 0 0 10px white;
+        margin-top: 10px;
+    }
+
+    .tarjetadetalles {
+        border-radius: 8px;
+        border: 3px solid white;
+        box-shadow: 0 0 30px rgb(0, 255, 208), inset 0 0 10px rgb(0, 255, 208);
+        margin-top: 10px;
+    }
+
+    .tarjetadesc {
+        border-radius: 8px;
+        border: 3px solid white;
+        box-shadow: 0 0 30px rgb(81, 0, 255), inset 0 0 10px rgb(81, 0, 255);
+        margin-top: 10px;
+    }
+
+    .tarjetaCompra {
+        border-radius: 8px;
+        border: 3px solid white;
+        box-shadow: 0 0 30px rgb(0, 255, 0), inset 0 0 10px rgb(0, 255, 0);
+        margin-top: 10px;
+    }
+
+    .tarjetapagos {
+        border-radius: 8px;
+        border: 3px solid white;
+        box-shadow: 0 0 30px rgb(255, 191, 0), inset 0 0 10px rgb(255, 191, 0);
+        margin-top: 10px;
+    }
 </style>
 <div class="container">
     <div class="card my-5 tarjeta_contenedor" style="background-color:rgba(0, 0, 0, 0.934);">
-        <div class="row justify-content-center ">
-            <div class="col-md-4 col-lg-3 mx-2 my-5 sticky-top" >
-                <div class="card bg-dark tarjetaitem" style="background-color: #0e0e0e; position: sticky;">
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-lg-3 mx-2 my-5">
+                <div class="card bg-dark tarjetaitem" style="background-color: #0e0e0e; ">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'inicio' %}" class="btn btn-danger">Volver</a>
+                    </div>
                     <img src="{{producto.imagen_producto}}" class="imagen-carta card-img-top " alt="">
                     <div class="card-body" style="color: aliceblue;">
-                        {% for a in marcas %}
-                        {% if producto.marca == a.id_marca %}
-                        <p class="card-text">{{a.nombre_marca}}</p>
-                        {% endif %}
-                        {% endfor %}
-                        <h5 class="card-title">${{producto.precio_venta | intcomma}}</h5>
+                        <p class="card-text">{{marca.nombre_marca}}</p>
+                        <h5 class="card-title">{{producto.precio_venta | intcomma}}</h5>
+                        <hr />
+                        <h4>Informacion extra del producto</h4>
+                        <hr />
+                        <h5>Tipo de producto: {{tipo.id_nombre}}</h5>
+                        <hr />
+                        <h5>Categoría: {{categoria.nombre_categoria}}</h5>
+                        <hr />
+                        <h5>Subcategoría: {{subcategoria.nombre_subcategoria}}</h5>
+                    </div>
+                </div>
+                <div class="card bg-dark tarjetapagos my-2">
+                    <div class="card-body">
+                        <h4 style="color: aliceblue; text-align: center;">Métodos de Pago</h4>
+                        <hr />
+                        <img src="{% static 'images/Pagos.png' %}" class="card-img-bottom">
                     </div>
                 </div>
             </div>
             <div class="col-md-8 col-lg-8 mx-2 my-5">
-                <div class="card bg-dark mb-5">
+                <div class="card mb-5 tarjetadetalles" style="background-color: rgba(0, 0, 0, 0.644);">
                     <div class="card-body">
-                        <div class="card-title">
+                        <div class="card-title mb-2">
                             <h1 style="text-align: center; color: aliceblue;">Detalles del producto</h1>
                         </div>
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center align-items-center mb-1">
                             <div class="col-7">
-                                <div class="card" style="background-color: #6e6e6e;">
+                                <div class="card bg-dark tarjetadesc">
                                     <div class="card-body">
-                                        <h1 class="card-title" style="color: aliceblue;">TARJETA 1</h1>
-
+                                        <h1 style="color: aliceblue;">{{producto.sku}} | {{producto.nombre_producto}}
+                                        </h1>
+                                        <hr />
+                                        <h2 style="color: aliceblue;">Descripción:</h2>
+                                        <p style="color: aliceblue;">{{producto.descripcion}}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-5">
-                                <div class="card"style="background-color: #414141;">
-                                    <div class="card-body" >
-                                        <h1 class="card-title" style="color: aliceblue;">TARJETA 2</h1>
+                            <div class="col-5 vertical-align: middle;">
+                                <div class="card bg-dark tarjetaCompra">
+                                    <div class="card-body">
+                                        <h1 class="card-title" style="color: aliceblue; text-align: center;">Comprar!
+                                        </h1>
+                                        <div class="d-grid gap-2">
+                                            <a href="{% url 'agregarProducto' producto.id_producto%}"
+                                                class="btn btn-success">al Carrito!</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +124,7 @@
                     </div>
                 </div>
 
-                <div class="card mb-5 tarjetainteres" >
+                <div class="card mb-5 tarjetainteres">
                     <h1 style="text-align: center;">Podría interesarte...</h1>
                 </div>
 
@@ -89,7 +146,8 @@
                             <div class="d-grid gap-2">
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{% url 'detalle' i.id_producto %}" class="btn btn-primary">detalles</a>
-                                    <a href="#" class="btn btn-success">¡carro!</a>
+                                    <a href="{% url 'agregarProducto' i.id_producto %}"
+                                        class="btn btn-success">¡carro!</a>
                                 </div>
                             </div>
                         </div>
