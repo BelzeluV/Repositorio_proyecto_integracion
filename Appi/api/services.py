@@ -24,7 +24,7 @@ class request_api():
                         }
                         arreglo.append(diccionario)
 
-                    print(Fore.GREEN + "\npetición de subcategorias exitosa!" +Style.RESET_ALL+"\n" )
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de subcategorias exitosa!" +Style.RESET_ALL+"\n" )
                     return arreglo
                 
                 elif Url == "categorias/":
@@ -39,7 +39,7 @@ class request_api():
                         }
                         arreglo.append(diccionario)
 
-                    print(Fore.GREEN + "\npetición de categorias exitosa!" +Style.RESET_ALL+"\n" )
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de categorias exitosa!" +Style.RESET_ALL+"\n" )
                     return arreglo
                 
                 elif Url == "productos/":
@@ -72,7 +72,7 @@ class request_api():
                         }
                         arreglo.append(diccionario)
 
-                    print(Fore.GREEN + "\npetición de productos exitosa!" +Style.RESET_ALL+"\n" )
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de productos exitosa!" +Style.RESET_ALL+"\n" )
                     return arreglo
                 
                 elif Url == "tipoProd/":
@@ -85,7 +85,7 @@ class request_api():
                         }
                         arreglo.append(diccionario)
 
-                    print(Fore.GREEN + "\npetición de tipos de producto exitosa!" +Style.RESET_ALL+"\n" )
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de tipos de producto exitosa!" +Style.RESET_ALL+"\n" )
                     return arreglo
                 
                 elif Url == "marcas/":
@@ -98,7 +98,7 @@ class request_api():
                             }
                         arreglo.append(diccionario)
 
-                    print(Fore.GREEN + "\npetición de marcas exitosa!" +Style.RESET_ALL+"\n" )
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de marcas exitosa!" +Style.RESET_ALL+"\n" )
                     return arreglo
                 
                 elif Url == "proveedores/":
@@ -119,7 +119,7 @@ class request_api():
                         }
                         arreglo.append(diccionario)
 
-                    print(Fore.GREEN + "\npetición de proveedores exitosa!" +Style.RESET_ALL+"\n" )
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de proveedores exitosa!" +Style.RESET_ALL+"\n" )
                     return arreglo
                 
                 elif Url == "ordenes/":
@@ -140,7 +140,7 @@ class request_api():
                             "usuario_rel": usuario_rel,
                         }
                         arreglo.append(diccionario)
-                    print(Fore.GREEN + "\nPetición de orden exitosa!" + Style.RESET_ALL + "\n")
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de orden exitosa!" + Style.RESET_ALL + "\n")
                     return arreglo
 
                 elif Url == "ordenxproductos/":
@@ -157,7 +157,7 @@ class request_api():
                             "cantidad": cantidad,
                         }
                         arreglo.append(diccionario)
-                    print(Fore.GREEN + "\nPetición de orden por producto exitosa!" + Style.RESET_ALL + "\n")
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de orden por producto exitosa!" + Style.RESET_ALL + "\n")
                     return arreglo
             
             else:
@@ -202,7 +202,7 @@ class request_api():
                         "imagen_producto": imagen_producto,
                         "activo": activo,
                     }
-                    print(Fore.GREEN + "\nPetición de producto exitosa!" + Style.RESET_ALL + "\n")
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de producto exitosa!" + Style.RESET_ALL + "\n")
                     return diccionario
                 
                 elif url == "tipoProd/":
@@ -215,7 +215,7 @@ class request_api():
                         "id_nombre" : id_nombre
                     }
 
-                    print(Fore.GREEN + "\npetición de tipos de producto exitosa!" +Style.RESET_ALL+"\n" )
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de tipos de producto exitosa!" +Style.RESET_ALL+"\n" )
                     return diccionario
                 
                 elif url == "proveedores/":
@@ -235,7 +235,7 @@ class request_api():
                         "email": email,
                         "fecha_registro": fecha_registro,
                     }
-                    print(Fore.GREEN + "\nPetición de proveedor exitosa!" + Style.RESET_ALL + "\n")
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de proveedor exitosa!" + Style.RESET_ALL + "\n")
                     return diccionario
 
                 elif url == "categorias/":
@@ -249,7 +249,7 @@ class request_api():
                         "nombre_categoria": nombre_categoria,
                         "tipo_producto": tipo_producto,
                     }
-                    print(Fore.GREEN + "\nPetición de categoría exitosa!" + Style.RESET_ALL + "\n")
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de categoría exitosa!" + Style.RESET_ALL + "\n")
                     return diccionario
 
                 elif url == "subcategorias/":
@@ -263,7 +263,7 @@ class request_api():
                         "nombre_subcategoria": nombre_subcategoria,
                         "categoria": categoria,
                     }
-                    print(Fore.GREEN + "\nPetición de subcategoria exitosa!" + Style.RESET_ALL + "\n")
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de subcategoria exitosa!" + Style.RESET_ALL + "\n")
                     return diccionario
 
                 elif url == "marcas/":
@@ -275,7 +275,7 @@ class request_api():
                         "id_marca": id_marca,
                         "nombre_marca": nombre_marca,
                     }
-                    print(Fore.GREEN + "\nPetición de marca exitosa!" + Style.RESET_ALL + "\n")
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de marca exitosa!" + Style.RESET_ALL + "\n")
                     return diccionario
 
                 elif url == "ordenes/":
@@ -295,7 +295,7 @@ class request_api():
                         "fecha_creacion": fecha_creacion,
                         "usuario_rel": usuario_rel,
                     }
-                    print(Fore.GREEN + "\nPetición de orden exitosa!" + Style.RESET_ALL + "\n")
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de orden exitosa!" + Style.RESET_ALL + "\n")
                     return diccionario
 
                 elif url == "ordenxproductos/":
@@ -311,7 +311,7 @@ class request_api():
                         "id_producto": id_producto,
                         "cantidad": cantidad,
                     }
-                    print(Fore.GREEN + "\nPetición de orden por producto exitosa!" + Style.RESET_ALL + "\n")
+                    print(Fore.GREEN + "\n"+'\u2713'+ " Petición de orden por producto exitosa!" + Style.RESET_ALL + "\n")
                     return diccionario
 
             else:
