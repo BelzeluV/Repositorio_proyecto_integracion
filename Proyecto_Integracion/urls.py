@@ -22,18 +22,18 @@ router.register(r'marcas', MarcaViewset)
 
 
 urlpatterns = [
-    #partes vitales del proyecto
+#partes vitales del proyecto
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('test/', Appi.test, name="testeo"),
+    path('accounts/',                               include('django.contrib.auth.urls')),
+    path('sync/',                                   Appi.synchronization,                            name = "sync"),
+    path('validations/',                            Appi.ValidarUsuario,                            name = "validar"),
 
-    #vistas de la pagina de los CRUD de los modelos
+#Vistas de los administradores de la pagina de MusicPro
+    path('manager/',                                Appi.inicioBackoffice,                          name="inicioBackoffice"),
     path('manager/categorias/',                     Appi.menuCategorias,                            name="categorias"),
-
-
     path('manager/tipo_de_producto/',               Appi.menuTipoProducto,                          name="tipoproducto"),
-
-
     path('manager/subcategorias/',                  Appi.menuSubcategorias,                         name="subcategorias"),
 
 

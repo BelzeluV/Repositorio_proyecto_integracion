@@ -1,0 +1,55 @@
+{% extends "baseAppi.html" %}
+{% load static %}
+{% block title %}MusicPro | Inicio{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center py-5">
+        <div class="col-md-8 col-lg-7 col-sm-12">
+            <div class="card bg-dark">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <img src="{% static 'images\samples\tienda.jpg'%}" class="img-fluid rounded-start">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-title pt-2">
+                            <p class="textocentro">title</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="textocentro">body</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-5 col-sm-12">
+            <div class="card bg-dark">
+                <div class="card-title pt-2">
+                    <h1 class="textocentro">
+                        Bienvenido al manager de MusicPro, {{user.username | capfirst }}!
+                    </h1>
+                    {% if user.is_superuser %}
+                    <h2 class="textocentro">usted es un Administrador Supremo.</h2>
+                    {% endif %}
+                </div>
+                <hr style="color: aliceblue;">
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        {% if user.is_superuser %}
+                        <div class="col-4">
+                            <a href="{% url 'sync'%}" class="btn btn-outline-warning">Sincronizar bases de datos</a>
+                        </div>
+                        <div class="col-4">
+                            <a href="#" class="btn btn-outline-primary">Ver informes de ventas</a>
+                        </div>
+                        {% else %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -138,7 +138,7 @@ class Producto(models.Model):
     categoria_producto  = models.ForeignKey(Categoria, on_delete = models.PROTECT, null = True)
     subcat_producto     = models.ForeignKey(Subcategoria, on_delete = models.PROTECT, null = True)
     proveedor           = models.ForeignKey(Proveedor, on_delete = models.PROTECT, null = True)
-    imagen_producto     = models.ImageField(upload_to = "productos", blank = True)
+    imagen_producto     = models.ImageField(upload_to = "productos", blank = True, null=True)
     activo              = models.BooleanField(default = True)
 
     def __str__(self): 

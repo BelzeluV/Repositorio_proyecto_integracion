@@ -13,6 +13,7 @@ def inicio(request):
     data = {"productos": productos}
     return render(request, "inicio/inicio.html", data)
 
+
 def detalle(request,id):
     #despliegue 
     lista_productos   = request_api.get("productos/")

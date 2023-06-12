@@ -159,9 +159,9 @@ class request_api():
                         arreglo.append(diccionario)
                     print(Fore.GREEN + "\n"+'\u2713'+ " Petición de orden por producto exitosa!" + Style.RESET_ALL + "\n")
                     return arreglo
-            
+
             else:
-                print(Fore.RED + "no hubo respuesta del servidor, verifica la conexión a internet," +Style.RESET_ALL+"\n")
+                print(Fore.RED + "no hubo respuesta del servidor, verifica la conexión a internet" +Style.RESET_ALL+"\n")
         except requests.exceptions.RequestException as e:
             error_msg = str(e)
             print(Fore.RED + "la Url "+Url+" ingresada no tiene coincidencias en la API del servidor\n     código de error: "+ error_msg + Style.RESET_ALL+"\n")

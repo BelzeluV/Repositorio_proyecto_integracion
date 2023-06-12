@@ -14,6 +14,11 @@ SECRET_KEY = 'django-insecure-&^fl4&ah_l@7p0elf3@n+naw4&!n6=*jd5^c^hv8s(+g(w2&0!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = '/validations/'
+
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Application definition
@@ -62,7 +67,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'AppClientes.cart.context_processor.importe_total_carro'
+                'AppClientes.cart.context_processor.importe_total_carro',
+                'AppClientes.cart.context_processor.categorias_productos',
+                'AppClientes.cart.context_processor.subcategorias_productos'
             ],
         },
     },
@@ -82,6 +89,10 @@ DATABASES = {
         'PASSWORD': 'Asdfqwer1234',
         'HOST': 'localhost',
         'PORT': '1521',
+    },
+    'sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 AUTH_USER_MODEL = 'Appi.Usuario'

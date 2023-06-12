@@ -1,15 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 from .api.services import *
+from .migrar import *
+
 # Create your views here.
-def generar_arreglo(tamano):
-    arreglo = []
-    variable = 0.1
-    for _ in range(tamano):
-        arreglo.append(variable)
-        variable += 0.5
-    return arreglo
+def synchronization(request):
+    doall()
+    return redirect(to = "inicioBackoffice")
+
+def ValidarUsuario(request):
+    if request.user.is_authenticated:
+        if request.user.is_superuser :
+            return redirect(to = "inicioBackoffice")
+        if request.user.is_staff:
+            return redirect(to = "inicioBackoffice")
+        else:
+            return redirect(to = "inicio")
+    return redirect('login')
 #CRUD 
+def inicioBackoffice(request):
+    return render(request, "Inicio/InicioBackoffice.html")
+
+
+
+
+
 def menuCategorias(request):
     return render(request,"CRUD_categorias/menu.html")
 
@@ -22,18 +37,7 @@ def menuSubcategorias(request):
     return render(request,"CRUD_subcategorias/menu.html")
 
 
-def test2(request):
-    lista_productos = request_api.get("productos/")  # Obtener la lista de productos de la API
-    tamaño = len(lista_productos)
-    retraso_animacion = generar_arreglo(tamaño)  # Generar el arreglo de retrasos
-    print(retraso_animacion)
-    for i in lista_productos:
-        for j in retraso_animacion:
-            if i.key == j.key:
-                print(i.key, j.key)
-    data = {'lista_productos': lista_productos, 'retraso_animacion': retraso_animacion}
-    
-    return render(request,"test/test.html", data)
+
 
 def test(request):
     productos = "subcategorias/"

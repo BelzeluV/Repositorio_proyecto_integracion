@@ -23,7 +23,6 @@ class SubcategoriaSerializer(serializers.ModelSerializer):
         fields  = '__all__'
 
 class productoSerializer(serializers.ModelSerializer):
-
     class Meta:
         model   = Producto
         fields  = '__all__'

@@ -47,23 +47,29 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Music Pro</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Categorias
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for i in cate %}
+                                <li><a class="dropdown-item" href="#">{{i.nombrecategoria}}</a></li>
+                                {% endfor %}
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                Subcategorias
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">hola</a></li>
-                                <li><a class="dropdown-item" href="#">hola</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                {% for i in subcate %}
+                                <li><a class="dropdown-item" href="#">{{i.nombre_subcategoria}}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
+                        
                     </ul>
                     <div class="d-flex flex-row">
                         <form class="d-flex p-2">
@@ -81,13 +87,26 @@
                                 </a>
                             </div>
                             <div class="d-flex">
-                                <a href="" class="btn btn-outline-secondary">
+                                {% if user.is_authenticated %}
+                                
+                                <a href="{% url 'logout' %}" class="btn btn-outline-danger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-universal-access" viewBox="0 0 16 16">
+                                    <path
+                                        d="M9.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM6 5.5l-4.535-.442A.531.531 0 0 1 1.531 4H14.47a.531.531 0 0 1 .066 1.058L10 5.5V9l.452 6.42a.535.535 0 0 1-1.053.174L8.243 9.97c-.064-.252-.422-.252-.486 0l-1.156 5.624a.535.535 0 0 1-1.053-.174L6 9V5.5Z" />
+                                </svg>Cerrar Sesión
+                                </a>
+                                <button class="btn btn-outline-success" disabled>Hola, {{user.username}}</button>
+
+                                {% else %}
+                                <a href="{% url 'login' %}" class="btn btn-outline-secondary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-universal-access" viewBox="0 0 16 16">
                                         <path
                                             d="M9.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM6 5.5l-4.535-.442A.531.531 0 0 1 1.531 4H14.47a.531.531 0 0 1 .066 1.058L10 5.5V9l.452 6.42a.535.535 0 0 1-1.053.174L8.243 9.97c-.064-.252-.422-.252-.486 0l-1.156 5.624a.535.535 0 0 1-1.053-.174L6 9V5.5Z" />
-                                    </svg> Sesión
+                                    </svg>Iniciar Sesión
                                 </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

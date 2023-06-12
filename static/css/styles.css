@@ -17,6 +17,7 @@ body::before {
 }
 
 .textocentro {
+    color: aliceblue;
     text-align: center;
     box-shadow: inset;
 }

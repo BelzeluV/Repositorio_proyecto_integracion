@@ -1,0 +1,37 @@
+{% extends "Base.html"%}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Iniciar Sesión {% endblock %}
+{% block content %}
+<div class="container pb-5">
+    <!--CENTRE TODO CON ESTO:   https://www.google.com/search?client=opera-gx&q=centrar+en+la+pantalla+bootstrap&sourceid=opera&ie=UTF-8&oe=UTF-8#fpstate=ive&vld=cid:e2555257,vid:1V1kJKeYTpo-->
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-6 col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <img src="https://www.malaga8.com/modules/dbblog/views/img/post/Resumen%202022%20-%20Tienda%20de%20instrumentos%20musicales%20en%20madrid.jpg"
+                        class="card-img-top">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-5">
+            <div class="card text-white bg-dark">
+                <div class="card-header">
+                    <h1 class="textocentro">Inicia Sesión</h1>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <br>
+                        <div class="d-grid gap-2">
+                            <input type="submit" class="btn btn-success" id="btnsubir" name="btnsubir" value="Guardar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

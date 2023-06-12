@@ -1,0 +1,28 @@
+{% extends "PlantillaBase.html"%}
+{% load humanize %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Vehiculos {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-4">
+            <div class="card text-white bg-dark ">
+                <div class="card-header">
+                    <h1 class="textocentro">Registrate</h1>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form | crispy}}
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <input type="submit" class="btn btn-success" id="btnsubir" name="btnsubir" value="Guardar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

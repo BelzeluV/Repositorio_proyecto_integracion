@@ -5,7 +5,11 @@
 
 {% block title %}MusicPro | Inicio{% endblock %}
 {% block content %}
-
+<style>
+    .textoclaro{
+        color: aliceblue;
+    }
+</style>
 <div class="container">
 
     <div class="row py-4">
@@ -92,6 +96,8 @@
                 <div style="align-items: center;">
                     {% if i.imagen_producto %}
                     <img src="{{i.imagen_producto}}" class="card-img-top imagen-carta imagen_carta_inicio">
+                    {% else %}
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/008/255/803/small/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-a-hand-drawn-layout-template-of-a-broken-robot-illustration-vector.jpg" class="card-img-top imagen-carta imagen_carta_inicio" >
                     {% endif %}
                     <div class="card-body">
                         <div style="text-align: center;">
@@ -150,13 +156,13 @@
             <div class="card text-bg-dark">
                 <img src="" class="card-img imagen-servicios">
                 <div class="card-img-overlay">
-                    <h5 class="card-title textoclaro"></h5>
+                    <h5 class="card-title textoclaro">Tiene una orden?, dirigase al portal de ordenes de servicio</h5>
                     <p class="card-text textoclaro"></p>
                     <small class="card-text textoclaro"></small>
                 </div>
             </div>
             <div class="d-grid gap-2">
-                <a href="#" class="btn btn-primary"></a><!--ir a pagina de las horas ## no programado!!!!!!!!!!-->
+                <a href="#" class="btn btn-primary">Ir al Portal de Ordenes</a><!--ir a pagina de las horas ## no programado!!!!!!!!!!-->
             </div>
         </div>
         <div class="col-lg-4 col-md-10 py-4">

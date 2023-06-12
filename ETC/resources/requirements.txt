@@ -7,3 +7,4 @@ django-crispy-forms
 django-livereload-server
 requests
 colorama
+tabulate

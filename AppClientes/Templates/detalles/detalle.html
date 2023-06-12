@@ -68,18 +68,23 @@
                     <div class="d-grid gap-2">
                         <a href="{% url 'inicio' %}" class="btn btn-danger">Volver</a>
                     </div>
+                    {% if producto.imagen_producto %}
                     <img src="{{producto.imagen_producto}}" class="imagen-carta card-img-top " alt="">
+                    {% else %}
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/008/255/803/small/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-a-hand-drawn-layout-template-of-a-broken-robot-illustration-vector.jpg"
+                        class="card-img-top imagen-carta imagen_carta_inicio">
+                    {% endif %}
                     <div class="card-body" style="color: aliceblue;">
-                        <p class="card-text">{{marca.nombre_marca}}</p>
+                        <p class="card-text">{{marca.nombre_marca | capfirst }}</p>
                         <h5 class="card-title">{{producto.precio_venta | intcomma}}</h5>
                         <hr />
                         <h4>Informacion extra del producto</h4>
                         <hr />
-                        <h5>Tipo de producto: {{tipo.id_nombre}}</h5>
+                        <h5>Tipo de producto: {{tipo.id_nombre | capfirst}}</h5>
                         <hr />
-                        <h5>Categoría: {{categoria.nombre_categoria}}</h5>
+                        <h5>Categoría: {{categoria.nombre_categoria | capfirst}}</h5>
                         <hr />
-                        <h5>Subcategoría: {{subcategoria.nombre_subcategoria}}</h5>
+                        <h5>Subcategoría: {{subcategoria.nombre_subcategoria | capfirst}}</h5>
                     </div>
                 </div>
                 <div class="card bg-dark tarjetapagos my-2">
@@ -100,7 +105,8 @@
                             <div class="col-7">
                                 <div class="card bg-dark tarjetadesc">
                                     <div class="card-body">
-                                        <h1 style="color: aliceblue;">{{producto.sku}} | {{producto.nombre_producto}}
+                                        <h1 style="color: aliceblue;">{{producto.sku | capfirst}} |
+                                            {{producto.nombre_producto | capfirst}}
                                         </h1>
                                         <hr />
                                         <h2 style="color: aliceblue;">Descripción:</h2>
@@ -135,6 +141,9 @@
                             <div style="align-items: center;">
                                 {% if i.imagen_producto %}
                                 <img src="{{i.imagen_producto}}" class="card-img-top imagen-carta imagen_carta_inicio">
+                                {% else %}
+                                <img src="https://static.vecteezy.com/system/resources/thumbnails/008/255/803/small/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-a-hand-drawn-layout-template-of-a-broken-robot-illustration-vector.jpg"
+                                    class="card-img-top imagen-carta imagen_carta_inicio">
                                 {% endif %}
                                 <div class="card-body">
                                     <div style="text-align: center;">
