@@ -2,11 +2,16 @@ from django.shortcuts import redirect, render
 from .models import *
 from .api.services import *
 from .migrar import *
-
+from .forms import UserForm
 # Create your views here.
 def synchronization(request):
     doall()
     return redirect(to = "inicioBackoffice")
+
+def registroUsuario(request):
+    formulario = UserForm
+    data = {"form" : formulario}
+    return render(request, "registration/registro.html", data)
 
 def ValidarUsuario(request):
     if request.user.is_authenticated:
@@ -17,27 +22,20 @@ def ValidarUsuario(request):
         else:
             return redirect(to = "inicio")
     return redirect('login')
-#CRUD 
+
+#pagina del backoffice
+
 def inicioBackoffice(request):
     return render(request, "Inicio/InicioBackoffice.html")
-
-
-
-
 
 def menuCategorias(request):
     return render(request,"CRUD_categorias/menu.html")
 
-
 def menuTipoProducto(request):
     return render(request,"CRUD_tipoproducto/menu.html")
 
-
 def menuSubcategorias(request):
     return render(request,"CRUD_subcategorias/menu.html")
-
-
-
 
 def test(request):
     productos = "subcategorias/"

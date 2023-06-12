@@ -1,25 +1,25 @@
-{% extends "PlantillaBase.html"%}
-{% load humanize %}
-{% load static %}
+{% extends "base.html"%}
+{% block title %}MusicPro | Regístrate!{% endblock %}
 {% load crispy_forms_tags %}
-{% block title %} Vehiculos {% endblock %}
+{% load static %}
 {% block content %}
 <div class="container">
     <div class="row justify-content-center align-items-center">
         <div class="col-4">
-            <div class="card text-white bg-dark ">
-                <div class="card-header">
-                    <h1 class="textocentro">Registrate</h1>
-                </div>
+            <div class="card text-white bg-dark">
                 <div class="card-body">
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        {{ form | crispy}}
+                    <div class="row justify-content-center">
+                        <div class="col-6">
+                            
+                        </div>
+                        <div class="col-6">
+
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="d-grid gap-2">
                 <input type="submit" class="btn btn-success" id="btnsubir" name="btnsubir" value="Guardar">
-                </form>
             </div>
         </div>
     </div>

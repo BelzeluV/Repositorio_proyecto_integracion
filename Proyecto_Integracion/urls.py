@@ -27,7 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', Appi.test, name="testeo"),
     path('accounts/',                               include('django.contrib.auth.urls')),
-    path('sync/',                                   Appi.synchronization,                            name = "sync"),
+    path('registro/',                               Appi.registroUsuario,                           name = "registrarse"),
+    path('sync/',                                   Appi.synchronization,                           name = "sync"),
     path('validations/',                            Appi.ValidarUsuario,                            name = "validar"),
 
 #Vistas de los administradores de la pagina de MusicPro

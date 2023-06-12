@@ -1,0 +1,11 @@
+<div class="form-group">
+    {{ form.RUT.label_tag }}
+    {{ form.RUT }}
+    {% if form.RUT.errors %}
+        <span class="text-danger">
+            {% for error in form.RUT.errors %}
+                {{ error }}
+            {% endfor %}
+        </span>
+    {% endif %}
+</div>
