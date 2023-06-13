@@ -42,8 +42,7 @@ def sync_cat():
         oracle_cursor.execute("SELECT * FROM Appi_categoria")
         oracle_categorias = oracle_cursor.fetchall()
         print(tabulate(oracle_categorias))
-    with connections['sqlite'].cursor() as sqlite_cursor: 
-                            # Sincronizar los datos de la tabla Categoria
+    with connections['sqlite'].cursor() as sqlite_cursor:                             # Sincronizar los datos de la tabla Categoria
         for row in oracle_categorias:
             """ categoria = Categoria(
                 nombrecategoria=row[1],
