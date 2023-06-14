@@ -5,9 +5,10 @@
 {% block content %}
 <style>
     .imgcont {
-        width: 200px;
-        height: 200px;
-        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 
     .imgcont img {
@@ -15,74 +16,143 @@
         width: 100%;
         height: 100%;
     }
+    .tarjetacontenedor{
+        background-color: rgba(0, 0, 0, 0.746);
+        border-radius: 7px;
+        border: 2px solid white;
+        box-shadow: 0 0 25px rgb(175, 255, 1), inset 0 0 15px rgb(175, 255, 1);
+
+    }
+    .tarjetausuario {
+        background-color: black;
+        border-radius: 7px;
+        border: 2px solid white;
+        box-shadow: 0 0 25px rgba(255, 1, 1), inset 0 0 15px rgb(255, 1, 1);
+    }
+
+    .tarjetadatospersonales {
+        background-color: black;
+        border-radius: 10px;
+        border: 2px solid white;
+        box-shadow: 0 0 25px rgb(1, 119, 255), inset 0 0 15px rgb(1, 119, 255);
+    }
+
+    .tarjetafoto {
+        background-color: black;
+        border-radius: 7px;
+        border: 2px solid white;
+        box-shadow: 0 0 25px rgb(255, 1, 247), inset 0 0 15px rgb(255, 1, 247);
+    }
 </style>
 <div class="container">
-    <div class="row justify-content-center align-items-center">
-        <div class="col-10">
-            <div class="card text-white bg-dark">
+    <div class="row align-items-center d-flex justify-content-center my-5">
+        <div class="col-lg-10 col-md-12 col-sm-12">
+            <div class="card text-white tarjetacontenedor">
+                <div class="card-header">
+                    <h1 style="text-align: center;">
+                        Regístrate en MusicPro!
+                    </h1>
+                </div>
                 <div class="card-body">
                     <form action="" method="post">
-                        <div class="row justify-content-center">
-                            <div class="col-3">
-                                <label>Nombre de Usuario</label>
-                                {{form.username}}
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-xl-3 col-lg-6 col-md-7 my-2">
+                                <div class="card tarjetausuario">
+                                    <div class="d-grid gap-2">
+                                        <a href="{% url 'inicio' %}" class="btn btn-danger">Volver al inicio</a>
+                                    </div>
+                                    <div class="card-header">
+                                        <h4 style="text-align: center;">Sobre tu Usuario</h4>
+                                    </div>
+                                    <div class="card-body">
 
-                                <label>Contraseña</label>
-                                {{form.password1}}
+                                        <label>Nombre de Usuario</label>
+                                        {{form.username}}
 
-                                <label>Repita la contraseña</label>
-                                {{form.password2}}
-                                <br>
+                                        <label>Contraseña</label>
+                                        {{form.password1}}
+
+                                        <label>Repita la contraseña</label>
+                                        {{form.password2}}
+
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-5">
-                                <div class="row">
-                                    <div class="col-lg-5">
-                                        <label>Nombres</label>
-                                        {{form.first_name}}
+                            <div class="col-xl-5 col-lg-8 col-md-8 my-2">
+                                <div class="card tarjetadatospersonales">
+                                    <div class="card-header">
+                                        <h2 style="text-align: center;">Tus datos personales</h2>
                                     </div>
-                                    <div class="col-lg-7">
-                                        <label>Apellidos</label>
-                                        {{form.last_name}}
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-5">
+                                                <label>Nombres</label>
+                                                {{form.first_name}}
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <label>Apellidos</label>
+                                                {{form.last_name}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label>Correo Electrónico</label>
+                                                {{form.email}}
+                                            </div>
+                                            <div class="col-6">
+                                                <label>Fecha de Nacimiento</label>
+                                                {{form.nacimiento}}
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label>Rut</label>
+                                                {{form.RUT}}
+                                            </div>
+                                            <div class="col">
+                                                <label>Numero de teléfono</label>
+                                                {{form.telefono}}
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label>Dirección</label>
+                                                {{form.Direccion}}
+                                                {{ form.comuna | as_crispy_field }}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-7">
-                                        <label>Correo Electrónico</label>
-                                        {{form.email}}
-                                    </div>
-                                    <div class="col-5">
-                                        <label>Fecha de Nacimiento</label>
-                                        {{form.nacimiento}}
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col">
-                                        <label>Rut</label>
-                                        {{form.RUT}}
-                                    </div>
-                                    <div class="col">
-                                        <label>Numero de teléfono</label>
-                                        {{form.telefono}}
-                                    </div>
-                                </div>
-
                             </div>
-                            <div class="col-4">
-                                <div class="row justify-content-center">
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAMFBMVEXMzMz////Nzc3Q0NDJycnT09Pz8/Pv7+/8/Pz4+PjW1tby8vLn5+fh4eHc3NzZ2dm2c49AAAAFMklEQVR4nO2dW6OrKAxGBeO1Xv7/v53aPfsMWFsTFBPPfOthP7XdroKAJKRFAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAvPQ/sywUeo4kLal5oGjY7LeEtFmtiCzk03VKReIOjcrH29YqgSCTpXaV+xlFIo6FypfckyfCs2bG81LVInFnSu075qPj5J8KlId2lGeiQJOve4x5xB1CQKOtfcQpGGZEHnhhsoHhK0pEif4C9Gtxk/fvK1fn5sHo/6nUd9UNC5evNzm2Ysr3OkOW02OEo3X+NI5fF2SqW+oh1pVvNbyN+MyoL5FUn+zHA2mTtq4orzTLq8hkdnuzMYcwqS/LHvfNqcgtrDzA99RsP0p4Yzybh2Jb25PqTOaGjhNsw6mpK22w/tX2/oYAhDGOoDQzXDtm6GhaY+OK9aNGwfYx/uzxX9+EjXtGfYzAUVYVDCL7Z+St39N2S4NFM7+E9XRH5IakhDhk+G759YpGyRWzJ8fN9V8cvOj7yvGjJkpViIkjZsGXaeGfL0wv0tK4b8YKCnxkmGHCOGAxX8oLUsJmfDULiZIlI0YThs3oIU/D2gaMFw6x58rtWqeZqmuSq2wp2CjTwDhqvUGL8s06qh+x1N2m6oNiTZI6oBw3UGF9G0vvxuenNkR330DeN00Wf7TVtzQTutRlt2DoC64XrH1n9alz1WoxE3sqVuGCdSUv95Mm/78GJ9wcxJ1TaMx9GdaM4czSrM8VTbMB5m9sJVcdSal3erbNgIL7kKhxteIyob9tHwsb+gjqMQrDtR1zAKDLGaJGp0VnhL1zBakPJuq2Ds9azlqa5hOFUwI6rR/Mn5UlQNo07KPXIRBuY53VTVMLyp2E8L0jepGkZLUqagc+E/YSxOVQ3DDsfPTZll71I1DBY0xN/QDrc8GM9QmoZhvpIgNyUaTfe/F1XDcMzgbxAK36Zp2Mka449h+E/2HxI1DetgRePZgs6Fi2/rhv+9WpJsGw5Q+7evlV7q2Tv17Y3asDthpLFtKLzUX4RfjOqML35ef9FEndu2YfjwJDiPH7yL8fikajglDabhUMqICKsaDik3YnQbMh7yVQ2DCdGzu+kYbLdxVrO6uxjRThvTMHwLZyWkaziFr+dFPaOezWl3XcPoPDbrToz3HzmPXMo7wlE35exFRQdEWMt1ZcPoWBKjn0YpDbwQorJhdCzJ7y5smjj4xFrLasee4gjwToGFOJrKjAJrG67Oln1txXXOBu9xRNtwnSz0pWHGOJLPzalRN1ynYlC1PQXU6xpf3LpE+oZvR6/ek01e6SbrV3HXsfqGG0lt1DfhPdY2/Vs6DT/vy4BhtHb7fTP1Y1PXXV0347ueKJHWgqHrtzP3Phbx8JLiYCYMxaW7JHuPNgxbUWUAKm+YIyw5ci0s0GfFkF8MUVq2x4whN5ddfAjejuErM28vnf1bZp99w2czfjz09O9H+oQqBqYMn+ubZVD1G03pX0e7Uj7SmOGzHbeSupfZv0+sQmHOcDmh18f5+csZy1ciw19wOu+PZD2Mc1WWviyreRwOHZS1aXgmMIQhDPWB4QFs1BjKWOzLSBWljDWG+OfnspKxLLaRamYZ6ykfLqF7Djl/K0K/8uVCzgr8Jrpp3qLfFhox748oHKzWfQa5f7FFvZ9mL0xPyT8LcJpg9h9QUO2ow2tXK7tir1Xks+5zd9FfxaU+wuV6Sx2Ga/x+NjqpKK9ls5ZGdtPruF7uf2IIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD9+Ad2rEx6t+ox0QAAAABJRU5ErkJggg=="
-                                        id="image-preview" class="card-img-top imgcont"
-                                        style="border-radius: 50%; border: 2px solid white; box-shadow: 0 0 25px rgb(1, 119, 255), inset 0 0 15px rgb(1, 119, 255);">
-                                </div>
-                                <br>
-                                    <label>Tu foto de Perfil</label>
-                                {{form.foto_de_Usuario}}
-                                <div class="d-grid gap-2">
-                                    <input type="submit" value="guardar" class="btn btn-success">
+                            <div class="col-xl-4 col-lg-8 col-md-6 my-2">
+                                <div class="card tarjetafoto">
+                                    <div class="card-header">
+                                        <h3 style="text-align: center;">Un toque especial</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row justify-content-center">
+                                            <div class="col-8">
+                                                <img src="https://i.pinimg.com/564x/24/50/ae/2450ae69306cfbffc1260f3d74d7163b.jpg"
+                                                    id="image-preview" class="imgcont card-img-top"
+                                                    style=" 
+                                                    border-radius: 50%;
+                                                        border: 2px solid white; 
+                                                        box-shadow: 0 0 25px rgb(1, 119, 255), inset 0 0 15px rgb(1, 119, 255);">
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <label>Tu foto de Perfil</label>
+                                                {{form.foto_de_Usuario}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <input type="submit" value="guardar" class="btn" style="background-color:rgb(255, 1, 247) ;color: white;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>

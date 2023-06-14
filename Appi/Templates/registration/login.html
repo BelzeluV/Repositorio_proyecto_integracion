@@ -1,14 +1,33 @@
 {% extends "Base.html"%}
-
 {% load static %}
 {% load crispy_forms_tags %}
 {% block title %} Iniciar Sesión {% endblock %}
 {% block content %}
+<style>
+    .tarjetaimagen {
+        border-radius: 7px;
+        border: 2px solid white;
+        box-shadow: 0 0 25px white, inset 0 0 15px white;
+
+    }
+
+    .tarjetalogin {
+        border-radius: 7px;
+        border: 2px solid white;
+        box-shadow: 0 0 25px rgb(1, 255, 162), inset 0 0 15px rgb(1, 255, 162);
+
+    }
+    .grupobtn{
+        border-radius: 7px;
+        border: 2px solid white;
+        box-shadow: 0 0 25px white, inset 0 0 15px white;
+    }
+</style>
 <div class="container pb-5">
     <!--CENTRE TODO CON ESTO:   https://www.google.com/search?client=opera-gx&q=centrar+en+la+pantalla+bootstrap&sourceid=opera&ie=UTF-8&oe=UTF-8#fpstate=ive&vld=cid:e2555257,vid:1V1kJKeYTpo-->
     <div class="row justify-content-center align-items-center">
         <div class="col-lg-6 col-md-7">
-            <div class="card">
+            <div class="card tarjetaimagen">
                 <div class="card-body">
                     <img src="https://www.malaga8.com/modules/dbblog/views/img/post/Resumen%202022%20-%20Tienda%20de%20instrumentos%20musicales%20en%20madrid.jpg"
                         class="card-img-top">
@@ -16,7 +35,15 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-5">
-            <div class="card text-white bg-dark">
+            <div class="d-grid gap-2 grupobtn">
+                <div class="btn-group">
+                    <a href="{% url 'inicio' %}" class="btn btn-danger">Ir al inicio</a>
+                    <a href="{% url 'registrarse' %}" class="btn btn-warning">No tienes cuenta?</a>
+                </div>
+            </div>
+            <br>
+            <div class="card text-white bg-dark tarjetalogin">
+                
                 <div class="card-header">
                     <h1 class="textocentro">Inicia Sesión</h1>
                 </div>

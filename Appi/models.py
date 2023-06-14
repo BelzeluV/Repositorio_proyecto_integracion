@@ -72,7 +72,7 @@ opcionescomuna = [
 
 class Usuario(AbstractUser):
     RUT                 = models.CharField(default = '', max_length = 13,  unique = True, error_messages = {"unique": "El rut ya está registrado."}, blank=True)
-    nombre_real         = models.CharField(default = '', max_length = 50)
+    nombre_real         = models.CharField(default = '', max_length = 50, null=True)
     nacimiento          = models.DateField(null = True)
     genero              = models.IntegerField(default = 2, choices = opcionesSexo)
     telefono            = models.CharField(default = '', max_length = 15)
