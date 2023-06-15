@@ -1,4 +1,7 @@
 from django.shortcuts import redirect, render
+from django.contrib import messages
+from django.contrib.auth import authenticate,login
+
 from .models import *
 from .api.services import *
 from .migrar import *
@@ -11,6 +14,23 @@ def synchronization(request):
 def registroUsuario(request):
     formulario = UserForm
     data = {"form" : formulario}
+
+    if request.method == 'POST':
+            formulario = UserForm(data=request.POST)
+            if formulario.is_valid():
+                formulario.save()
+                user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
+                login(request,user)
+                messages.success(request,"Logueado correctamente")
+                return redirect(to="home")
+            else:
+                data["form"] = formulario
+                print("hay un error dentro del formulario, por favor corrigalo")
+
+
+
+
+
     return render(request, "registration/registro.html", data)
 
 def ValidarUsuario(request):
