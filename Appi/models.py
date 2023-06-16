@@ -72,7 +72,6 @@ opcionescomuna = [
 
 class Usuario(AbstractUser):
     RUT                 = models.CharField(default = '', max_length = 13,  unique = True, error_messages = {"unique": "El rut ya está registrado."}, blank=True)
-    nombre_real         = models.CharField(default = '', max_length = 50, null=True)
     nacimiento          = models.DateField(null = True)
     genero              = models.IntegerField(default = 2, choices = opcionesSexo)
     telefono            = models.CharField(default = '', max_length = 15)
@@ -81,7 +80,7 @@ class Usuario(AbstractUser):
     foto_de_Usuario     = models.ImageField(upload_to = "usuarios",null = True)
 
     class Meta:
-        ordering = ['nombre_real']
+        ordering = ['username']
 
     def __str__(self):
         return self.username

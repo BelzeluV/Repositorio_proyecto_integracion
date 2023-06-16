@@ -2,9 +2,9 @@ from django.contrib import admin
 from .models import *
 
 class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'username', 'email', 'nombre_real', 'nacimiento', 'genero', 'telefono', 'Direccion', 'comuna')
+    list_display = ('id', 'username', 'email', 'nacimiento', 'genero', 'telefono', 'Direccion', 'comuna')
     list_filter = ('genero', 'comuna')
-    search_fields = ('username', 'email', 'nombre_real', 'telefono')
+    search_fields = ('username', 'email', 'telefono')
     
 class ProveedorAdmin(admin.ModelAdmin):
     list_display = ('id_proveedor', 'nombreproveedor', 'direccion', 'telefono', 'email', 'fecha_registro')

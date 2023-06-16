@@ -45,9 +45,10 @@
         border: 2px solid white;
         box-shadow: 0 0 25px rgb(255, 1, 247), inset 0 0 15px rgb(255, 1, 247);
     }
-    .contenedorerror{
+
+    .contenedorerror {
         border-radius: 7px;
-        border: 3px solid ;
+        border: 3px solid;
         box-shadow: 0 0 5px rgb(248, 53, 53), inset 0 0 5px rgb(248, 53, 53);
     }
 </style>
@@ -61,7 +62,7 @@
                     </h1>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="row justify-content-center align-items-center">
                             <div class="col-xl-3 col-lg-6 col-md-7 my-2">
                                 <div class="card tarjetausuario">
@@ -159,6 +160,14 @@
                                                 </span>
                                                 {% endif %}
                                             </div>
+                                            {{form.genero | as_crispy_field}}
+                                                {% if form.genero.errors %}
+                                                <span class="text-danger">
+                                                    {% for error in form.genero.errors %}
+                                                    {{ error }}
+                                                    {% endfor %}
+                                                </span>
+                                                {% endif %}
                                         </div>
                                         <hr>
                                         <div class="row">
@@ -174,7 +183,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="col">
-                                                <label>Numero de teléfono</label>
+                                                <label>teléfono</label>
                                                 {{form.telefono}}
                                                 {% if form.telefono.errors %}
                                                 <span class="text-danger">
@@ -184,9 +193,11 @@
                                                 </span>
                                                 {% endif %}
                                             </div>
+
                                         </div>
                                         <hr>
                                         <div class="row">
+
                                             <div class="col">
                                                 <label>Dirección</label>
                                                 {{form.Direccion}}
@@ -198,6 +209,7 @@
                                                     {% endfor %}
                                                 </span>
                                                 {% endif %}
+                                                
                                             </div>
                                         </div>
                                     </div>

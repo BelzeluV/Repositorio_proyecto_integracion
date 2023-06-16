@@ -16,14 +16,15 @@ def registroUsuario(request):
     data = {"form" : formulario}
 
     if request.method == 'POST':
-            formulario = UserForm(data=request.POST)
+            formulario = UserForm(data=request.POST, files=request.FILES)
             if formulario.is_valid():
                 formulario.save()
                 user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
                 login(request,user)
                 messages.success(request,"Logueado correctamente")
-                return redirect(to="home")
+                return redirect(to="inicio")
             else:
+                print(formulario.errors)
                 data["form"] = formulario
                 print("hay un error dentro del formulario, por favor corrigalo")
 
