@@ -85,6 +85,13 @@ class Usuario(AbstractUser):
     def __str__(self):
         return self.username
     
+
+class UserProfilePicture(models.Model):
+    user                = models.OneToOneField(Usuario, on_delete=models.PROTECT)
+    foto_usuario        = models.ImageField()
+    def __str__(self):
+        return self.user
+
 class Proveedor(models.Model):
     id_proveedor        = models.AutoField(primary_key = True)
     nombreproveedor     = models.CharField(max_length = 50)
