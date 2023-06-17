@@ -18,6 +18,7 @@ def registroUsuario(request):
             formulario = UserForm(data=request.POST, files=request.FILES)
             print("el formulario esta bien?: ", formulario.is_valid())
             if formulario.is_valid():
+                formulario.save()
                 user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
                 login(request,user)
                 messages.success(request,"Iniciaste sesión correctamente")
