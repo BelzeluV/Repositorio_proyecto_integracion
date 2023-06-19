@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'Proyecto_Integracion.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'oracle': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'xe',
         'USER': 'UsuarioAppi',
@@ -90,7 +90,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '1521',
     },
-    'sqlite': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }

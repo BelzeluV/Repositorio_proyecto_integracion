@@ -129,7 +129,7 @@ class Producto(models.Model):
     id_producto         = models.AutoField(primary_key = True)
     SKU                 = models.CharField(max_length = 10, unique = True, error_messages = {"unique" : "Este SKU ya está registrado"})
     nombre_producto     = models.CharField(max_length = 60)
-    descripcion         = models.TextField(max_length = 1000)
+    descripcion         = models.TextField(max_length = 1000,null=True)
     Precio_compra       = models.IntegerField()
     precio_venta        = models.IntegerField()
     precio_oferta       = models.IntegerField(blank = True)
