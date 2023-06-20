@@ -46,7 +46,10 @@ def inicioBackoffice(request):
     return render(request, "Inicio/InicioBackoffice.html")
 
 def menuCategorias(request):
-    return render(request,"CRUD_categorias/menu.html")
+    categorias = Categoria.objects.all()
+    tipo = TipoProducto.objects.all()
+    data = {"tipo": tipo, "categorias": categorias}
+    return render(request,"CRUD_categorias/menu.html", data)
 
 def menuTipoProducto(request):
     return render(request,"CRUD_tipoproducto/menu.html")

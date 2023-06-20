@@ -2,10 +2,12 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
+from AppClientes.urls import urlpatterns as clientes_urls
+from Appi.urls import urlpatterns as appi_urls
+from Appi import views as base
+
 from rest_framework import routers  
-from Appi import views as Appi
 from Appi.api.viewsets import *
-from AppClientes import views as Clientes
 
 
 router = routers.DefaultRouter()
@@ -23,31 +25,16 @@ router.register(r'marcas', MarcaViewset)
 
 urlpatterns = [
 #partes vitales del proyecto
+    path('', include(clientes_urls)),
     path('api/', include(router.urls)),
+    path('manager/', include(appi_urls)),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
-    path('test/', Appi.test, name="testeo"),
-    path('accounts/',                               include('django.contrib.auth.urls')),
-    path('registro/',                               Appi.registroUsuario,                           name = "registrarse"),
-    path('sync/',                                   Appi.synchronization,                           name = "sync"),
-    path('validations/',                            Appi.ValidarUsuario,                            name = "validar"),
 
-#Vistas de los administradores de la pagina de MusicPro
-    path('manager/',                                Appi.inicioBackoffice,                          name="inicioBackoffice"),
-    path('manager/categorias/',                     Appi.menuCategorias,                            name="categorias"),
-    path('manager/tipo_de_producto/',               Appi.menuTipoProducto,                          name="tipoproducto"),
-    path('manager/subcategorias/',                  Appi.menuSubcategorias,                         name="subcategorias"),
-
-
-#Vistas para los clientes
-    path('',                                        Clientes.inicio,                                name="inicio"),
-    path('detalle/<id>/',                           Clientes.detalle,                               name="detalle"),
-    path('carro/',                                  Clientes.carro,                                 name="carro"),
-    path('AgregarProducto/<id>/',                   Clientes.agregar_producto,                      name = "agregarProducto"),
-    path('EliminarProducto/<id>/',                  Clientes.eliminar_producto,                     name = "eliminarProducto"),
-    path('RestarProducto/<id>/',                    Clientes.restar_producto,                       name = "restarProducto"),
-    path('LimpiarCarro/',                           Clientes.vaciar_carro,                          name = "limpiarCarro"),
-
-
+    path('test/', base.test, name="testeo"),
+    path('registro/',                               base.registroUsuario,                           name = "registrarse"),
+    path('sync/',                                   base.synchronization,                           name = "sync"),
+    path('validations/',                            base.ValidarUsuario,                            name = "validar"),
 ]
 
 if settings.DEBUG:
